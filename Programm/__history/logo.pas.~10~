@@ -1,0 +1,58 @@
+unit logo;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.jpeg, Vcl.ExtCtrls;
+
+type
+  TForm6 = class(TForm)
+    Image1: TImage;
+    Timer1: TTimer;
+    Timer2: TTimer;
+    procedure Timer1Timer(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form6: TForm6;
+
+implementation
+
+{$R *.dfm}
+
+uses System_;
+
+end;
+
+procedure TForm6.FormPaint(Sender: TObject);
+var
+i: integer;
+begin
+ for i:=0 to 255 do
+  begin
+    Form1.AlphaBlendValue:=i;
+    sleep(1);
+end;
+
+procedure TForm6.FormShow(Sender: TObject);
+begin
+AnimateWindow(Handle, 500, AW_CENTER or AW_SLIDE);
+
+end;
+
+procedure TForm6.Timer1Timer(Sender: TObject);
+begin
+Application.CreateForm(TForm1, Form1);
+form6.Visible:=false;
+form1.Visible:=true;
+form6.Timer1.Enabled:=false;
+end;
+
+end.
