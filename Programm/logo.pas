@@ -14,6 +14,8 @@ type
     procedure FormPaint(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
 
   private
     { Private declarations }
@@ -39,14 +41,15 @@ begin
      update;
      sleep(2);
   end;                       }
+
+ end;
+
+procedure TForm6.FormCreate(Sender: TObject);
+begin
   form6.AlphaBlendValue :=255;
   update;
-  sleep(2000);
-  if ((form6.AlphaBlendValue =255) and (form6.Timer1.Enabled=False)) then
-  begin
-  form6.Timer1.Enabled:=true;
-  end;
- 
+
+  timer2.Enabled:=true;
 end;
 
 procedure TForm6.FormPaint(Sender: TObject);
@@ -58,12 +61,26 @@ end;
 
 procedure TForm6.Timer1Timer(Sender: TObject);
 begin
-    Application.CreateForm(TForm1, Form1);
-    form1.Visible:=true;
-    form6.visible:=false;
+
+
     timer1.Destroy;
 
 
+end;
+
+procedure TForm6.Timer2Timer(Sender: TObject);
+var
+i:integer;
+begin
+i:=i+1;
+if i>2 then
+ begin
+  form6.AlphaBlendValue :=0;
+  update;
+  Application.CreateForm(TForm1, Form1);
+  form1.Visible:=true;
+  timer2.Enabled:=false;
+ end;
 end;
 
 end.

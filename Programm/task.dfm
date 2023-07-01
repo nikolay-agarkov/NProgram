@@ -19,7 +19,7 @@ object Form7: TForm7
     Height = 273
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 726
+    ExplicitWidth = 748
     object Label1: TLabel
       Left = 16
       Top = 8
@@ -57,7 +57,11 @@ object Form7: TForm7
       Width = 241
       Height = 271
       Align = alRight
+      Color = clMedGray
+      Enabled = False
+      ParentBackground = False
       TabOrder = 1
+      ExplicitLeft = 506
       object Label2: TLabel
         Left = 16
         Top = 12
@@ -203,6 +207,15 @@ object Form7: TForm7
         TimeFormat = 'hh:nn:ss'
       end
     end
+    object RadioButton1: TRadioButton
+      Left = 376
+      Top = 13
+      Width = 113
+      Height = 17
+      Caption = #1040#1082#1090#1080#1074#1080#1088#1086#1074#1072#1090#1100
+      TabOrder = 2
+      OnClick = RadioButton1Click
+    end
   end
   object Panel3: TPanel
     Left = 0
@@ -211,7 +224,7 @@ object Form7: TForm7
     Height = 266
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 726
+    ExplicitWidth = 748
     ExplicitHeight = 265
     object Label12: TLabel
       Left = 16
@@ -232,7 +245,12 @@ object Form7: TForm7
       Width = 241
       Height = 264
       Align = alRight
+      Color = clMedGray
+      Enabled = False
+      ParentBackground = False
       TabOrder = 0
+      ExplicitLeft = 506
+      ExplicitHeight = 263
       object Label8: TLabel
         Left = 16
         Top = 12
@@ -382,10 +400,20 @@ object Form7: TForm7
         24
         24)
     end
+    object RadioButton2: TRadioButton
+      Left = 376
+      Top = 10
+      Width = 113
+      Height = 17
+      Caption = #1040#1082#1090#1080#1074#1080#1088#1086#1074#1072#1090#1100
+      TabOrder = 2
+      OnClick = RadioButton2Click
+    end
   end
   object timer_bd_sc: TTimer
-    Interval = 4000
+    Enabled = False
     OnTimer = timer_bd_scTimer
-    Left = 352
+    Left = 713
+    Top = 16
   end
 end

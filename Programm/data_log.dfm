@@ -20,6 +20,7 @@ object Form8: TForm8
     Height = 657
     Align = alLeft
     TabOrder = 0
+    ExplicitHeight = 656
     object Label1: TLabel
       Left = 16
       Top = 88
@@ -94,9 +95,8 @@ object Form8: TForm8
     Height = 657
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 265
-    ExplicitWidth = 722
-    ExplicitHeight = 495
+    ExplicitWidth = 730
+    ExplicitHeight = 656
     object Panel3: TPanel
       Left = 1
       Top = 448
@@ -104,7 +104,8 @@ object Form8: TForm8
       Height = 208
       Align = alBottom
       TabOrder = 0
-      ExplicitWidth = 660
+      ExplicitTop = 447
+      ExplicitWidth = 728
       object Chart1: TChart
         Left = 1
         Top = 1
@@ -117,10 +118,7 @@ object Form8: TForm8
         View3D = False
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = 5
-        ExplicitTop = 45
-        ExplicitWidth = 652
-        ExplicitHeight = 267
+        ExplicitWidth = 726
         DefaultCanvas = 'TGDIPlusCanvas'
         PrintMargins = (
           15
@@ -128,12 +126,15 @@ object Form8: TForm8
           15
           19)
         ColorPaletteIndex = 13
-        object Series1: TPointSeries
+        object Series1: TLineSeries
           HoverElement = [heCurrent]
+          Marks.Callout.Length = 0
           SeriesColor = clBlue
+          Brush.BackColor = clDefault
           ClickableLine = False
           Pointer.InflateMargins = True
           Pointer.Style = psCircle
+          Pointer.Visible = True
           XValues.Name = 'X'
           XValues.Order = loAscending
           YValues.Name = 'Y'
@@ -150,7 +151,7 @@ object Form8: TForm8
       FixedCols = 0
       RowCount = 2
       TabOrder = 1
-      ExplicitWidth = 720
+      ExplicitWidth = 728
       ExplicitHeight = 446
       ColWidths = (
         168
@@ -162,7 +163,7 @@ object Form8: TForm8
   end
   object Timer_bd_data_log: TTimer
     Enabled = False
-    Interval = 3000
+    Interval = 10000
     OnTimer = Timer_bd_data_logTimer
     Left = 16
     Top = 8

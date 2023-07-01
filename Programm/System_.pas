@@ -8,7 +8,9 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
   Vcl.WinXCtrls, Vcl.Menus, Data.DBXMySQL, Data.DB, Data.SqlExpr, Data.FMTBcd,
   Vcl.ComCtrls, Vcl.ButtonGroup, Vcl.Imaging.pngimage,IniFiles, Vcl.Grids,
-  Vcl.Imaging.jpeg;
+  Vcl.Imaging.jpeg, Data.Win.ADODB, Datasnap.DBClient, Datasnap.Win.MConnect,
+  Datasnap.Win.SConnect, IdBaseComponent, IdComponent, IdCustomTCPServer,
+  IdSocksServer;
 
 type
   TForm1 = class(TForm)
@@ -42,7 +44,6 @@ type
     Label6: TLabel;
     MainMenu1: TMainMenu;
     N1: TMenuItem;
-    N2: TMenuItem;
     N3: TMenuItem;
     N4: TMenuItem;
     N5: TMenuItem;
@@ -52,7 +53,6 @@ type
     Panel15: TPanel;
     Image7: TImage;
     SQLConnection1: TSQLConnection;
-    SQLQuery1: TSQLQuery;
     Timer_bd: TTimer;
     GroupBox1: TGroupBox;
     Label7: TLabel;
@@ -82,7 +82,6 @@ type
     Panel_tab1: TPanel;
     Label16: TLabel;
     ComboBox1: TComboBox;
-    SQLQuery2: TSQLQuery;
     T_bd_value_now: TTimer;
     Panel_tab2: TPanel;
     Label17: TLabel;
@@ -95,9 +94,13 @@ type
     Label20: TLabel;
     Image9: TImage;
     Label21: TLabel;
-    N6: TMenuItem;
     N8: TMenuItem;
     N9: TMenuItem;
+    ADOConnection1: TADOConnection;
+    SQLQuery1: TSQLQuery;
+    SQLQuery2: TSQLQuery;
+    Timer1: TTimer;
+    Button4: TButton;
     procedure Timer_dateTimer(Sender: TObject);
     procedure N4Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -117,6 +120,8 @@ type
     procedure TabControl1Change(Sender: TObject);
     procedure N8Click(Sender: TObject);
     procedure N9Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -137,33 +142,46 @@ uses lang, about, BD_connect, logo, task, data_log;
 procedure con_sql();
 var
   Ini: Tinifile;
-  host,name_bd, pass, user: string;
+  host,name_bd,port, pass, user: string;
 begin
     Ini:=TiniFile.Create(extractfilepath(paramstr(0))+'Settings.set');
     host:=Ini.ReadString('DB','host','');
     name_bd:=Ini.ReadString('DB','name_db','');
     user:=Ini.ReadString('DB','user','');
     pass:=Ini.ReadString('DB','pass','');
+    port:=Ini.ReadString('DB','port','');
     Ini.Free;
   try
     Form1.SQLConnection1.Connected := False;
     Form1.SQLConnection1.DriverName := 'MySQL';
     Form1.SQLConnection1.ConnectionName := 'MySQLConnection';
+
     Form1.SQLConnection1.Params.Values['HostName'] := host;
     Form1.SQLConnection1.Params.Values['Database'] := name_bd;
     Form1.SQLConnection1.Params.Values['Password'] := pass;
     Form1.SQLConnection1.Params.Values['User_Name'] := user;
+    Form1.SQLConnection1.Params.Values['port'] := port;
     Form1.SQLConnection1.Connected := True;
+//    form1.ADOConnection1.ConnectionString:='Provider=MSDASQL.1;Persist Security Info=False;Extended Properties="DSN=connect1;SERVER=127.0.0.1;UID=main_comp;DATABASE=test_water;PORT=3306"
+//form1.ADOConnection1.Connected:=true;
     Form1.Panel17.Caption := 'Связь с БД';
     Form1.Panel17.Color := clLime;
     bd_c:=true;
     form1.Timer_bd.Enabled:=true;
     form1.T_bd_value_now.Enabled:=true;
+    form7.timer_bd_sc.Enabled:=true;
+    form1.Timer1.Enabled:=true;
+        form1.Button4.Enabled:=false;
   except
     Form1.Timer_bd.Enabled := False;
     Form1.Panel17.Caption := 'Связь с БД';
     Form1.Panel17.Color := clRed;
     bd_c:=false;
+        form1.Timer_bd.Enabled:=false;
+    form1.T_bd_value_now.Enabled:=false;
+    form7.timer_bd_sc.Enabled:=false;
+    form1.Timer1.Enabled:=false;
+         form1.Button4.Enabled:=true;
     MessageBox(Form1.Handle, 'Ошибка подключения БД', '', MB_ICONError);
   end;
 end;
@@ -271,11 +289,17 @@ begin
   Form1.Timer_bd.Enabled := True;
 end;
 
+procedure TForm1.Button4Click(Sender: TObject);
+begin
+  con_sql();
+end;
+
 procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 var
   DlgRes: integer;
 begin
-    form6.close;
+   Application.Terminate;
+  exit;
 
 {  // Подтверждение на закрытие.
   If MessageDlg('Завершить работу приложения?', mtInformation, [mbNO, mbYES], 0)
@@ -434,13 +458,39 @@ begin
 end;
 
 
+procedure TForm1.Timer1Timer(Sender: TObject);
+begin
+
+try
+
+    Form1.SQLQuery2.Active := False;
+    Form1.SQLQuery2.SQL.Clear;
+    Form1.SQLQuery2.SQL.Add  ('SELECT `name`,`level_water` FROM `sensor_level`');
+    Form1.SQLQuery2.Active := True;
+      
+except
+
+    Form1.Timer_bd.Enabled := False;
+    Form1.Panel17.Caption := 'Связь с БД';
+    Form1.Panel17.Color := clRed;
+    bd_c:=false;
+    form1.Timer_bd.Enabled:=false;
+    form1.T_bd_value_now.Enabled:=false;
+    form7.timer_bd_sc.Enabled:=false;
+    form1.Timer1.Enabled:=false;
+    form1.Button4.Enabled:=true;
+    MessageBox(Form1.Handle, 'Ошибка подключения БД', '', MB_ICONError);
+end;
+
+end;
+
 procedure TForm1.Timer_bdTimer(Sender: TObject);
 begin
   Form1.SQLQuery1.Active := False;
   Form1.SQLQuery1.SQL.Clear;
   Form1.SQLQuery1.SQL.Add
     ('SELECT name,status, procent_otk FROM `status_zatvor`');
-  Form1.SQLQuery1.Active := True;
+ Form1.SQLQuery1.Active := True;
   Form1.SQLQuery1.First;
   if Form1.SQLQuery1.Fields[1].AsString = '1' then
   begin
@@ -522,7 +572,8 @@ var
   i,j: Integer;
 
 begin
-  if bd_c=true then
+
+ if bd_c=true then
  begin
 
     for i := StringGrid1.FixedRows to StringGrid1.RowCount - 1 do StringGrid1.Rows[i].Clear;

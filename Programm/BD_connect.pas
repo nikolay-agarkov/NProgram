@@ -18,6 +18,8 @@ type
     Label3: TLabel;
     Edit4: TEdit;
     Label4: TLabel;
+    Label5: TLabel;
+    Edit5: TEdit;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -44,6 +46,7 @@ begin
     ini.WriteString('DB','name_db',edit2.Text);
       ini.WriteString('DB','user',edit3.Text);
         ini.WriteString('DB','pass',edit4.Text);
+                ini.WriteString('DB','port',edit5.Text);
         ini.Free;
   try
   con_sql();
@@ -56,18 +59,20 @@ end;
 procedure TForm4.FormCreate(Sender: TObject);
 var
   Ini: Tinifile;
-  host,name_bd, pass, user: string;
+  host,name_bd, pass, user, port: string;
 begin
     Ini:=TiniFile.Create(extractfilepath(paramstr(0))+'Settings.set');
     host:=Ini.ReadString('DB','host','');
     name_bd:=Ini.ReadString('DB','name_db','');
     user:=Ini.ReadString('DB','user','');
     pass:=Ini.ReadString('DB','pass','');
+    port:=Ini.ReadString('DB','port','');
     Ini.Free;
     edit1.Text:=host;
     edit2.Text:=name_bd;
     edit3.Text:=user;
     edit4.Text:=pass;
+    edit5.Text:=port;
 
 end;
 

@@ -42,12 +42,16 @@ type
     Edit6: TEdit;
     Label12: TLabel;
     StringGrid2: TStringGrid;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
     procedure FormCreate(Sender: TObject);
     procedure timer_bd_scTimer(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure RadioButton2Click(Sender: TObject);
+    procedure RadioButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -165,6 +169,28 @@ begin
    form7.StringGrid2.Cells[2,0]:='% влажности минимальный';
    form7.StringGrid2.Cells[3,0]:='% влажности максимальный';
 
+
+end;
+
+procedure TForm7.RadioButton1Click(Sender: TObject);
+begin
+panel2.Enabled:=true;
+panel2.Color:=clBtnFace;
+panel4.Color:=clMedGray;
+panel4.Enabled:=false;
+form7.RadioButton1.Checked:=true;
+form7.RadioButton2.Checked:=false;
+
+end;
+
+procedure TForm7.RadioButton2Click(Sender: TObject);
+begin
+panel4.Enabled:=true;
+panel4.Color:=clBtnFace;
+panel2.Color:=clMedGray;
+panel2.Enabled:=false;
+form7.RadioButton2.Checked:=true;
+form7.RadioButton1.Checked:=false;
 
 end;
 

@@ -7895,8 +7895,19 @@ object Form1: TForm1
         Stretch = True
       end
     end
+    object Button4: TButton
+      Left = 144
+      Top = 0
+      Width = 153
+      Height = 41
+      Caption = #1055#1086#1074#1090#1086#1088#1085#1086#1077' '#1087#1086#1076#1082#1083#1102#1095#1077#1085#1080#1077
+      Enabled = False
+      TabOrder = 1
+      OnClick = Button4Click
+    end
   end
   object Timer_date: TTimer
+    Interval = 3000
     OnTimer = Timer_dateTimer
     Left = 32
     Top = 480
@@ -7909,9 +7920,6 @@ object Form1: TForm1
       object N9: TMenuItem
         Caption = #1040#1088#1093#1080#1074' '#1076#1072#1085#1085#1099#1093
         OnClick = N9Click
-      end
-      object N6: TMenuItem
-        Caption = #1044#1077#1084#1086
       end
       object N4: TMenuItem
         Caption = #1042#1099#1093#1086#1076
@@ -7928,9 +7936,6 @@ object Form1: TForm1
         Caption = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1080#1077' '#1079#1072#1076#1072#1095#1080
         OnClick = N8Click
       end
-    end
-    object N2: TMenuItem
-      Caption = #1055#1086#1084#1086#1097#1100
     end
     object N3: TMenuItem
       Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
@@ -7953,31 +7958,48 @@ object Form1: TForm1
       'Compressed=False'
       'Encrypted=False'
       'ConnectTimeout=60')
-    Left = 440
-  end
-  object SQLQuery1: TSQLQuery
-    MaxBlobSize = -1
-    Params = <>
-    SQLConnection = SQLConnection1
-    Left = 464
-    Top = 120
+    Left = 408
+    Top = 8
   end
   object Timer_bd: TTimer
     Enabled = False
     OnTimer = Timer_bdTimer
     Left = 464
   end
-  object SQLQuery2: TSQLQuery
-    MaxBlobSize = -1
-    Params = <>
-    SQLConnection = SQLConnection1
-    Left = 464
-    Top = 65
-  end
   object T_bd_value_now: TTimer
     Enabled = False
     OnTimer = T_bd_value_nowTimer
     Left = 787
     Top = 4
+  end
+  object ADOConnection1: TADOConnection
+    ConnectionString = 
+      'Provider=MSDASQL.1;Persist Security Info=False;Extended Properti' +
+      'es="DSN=connect1;SERVER=127.0.0.1;UID=main_comp;DATABASE=test_wa' +
+      'ter;PORT=3607"'
+    Provider = 'MSDASQL.1'
+    Left = 465
+    Top = 361
+  end
+  object SQLQuery1: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection1
+    Left = 465
+    Top = 217
+  end
+  object SQLQuery2: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection1
+    Left = 465
+    Top = 177
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = Timer1Timer
+    Left = 881
+    Top = 58
   end
 end

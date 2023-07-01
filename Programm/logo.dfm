@@ -2,7 +2,6 @@ object Form6: TForm6
   Left = 0
   Top = 0
   AlphaBlend = True
-  AlphaBlendValue = 0
   BorderStyle = bsNone
   Caption = 'Logo'
   ClientHeight = 513
@@ -15,6 +14,7 @@ object Form6: TForm6
   Font.Style = []
   Position = poScreenCenter
   OnActivate = FormActivate
+  OnCreate = FormCreate
   OnPaint = FormPaint
   TextHeight = 15
   object Image1: TImage
@@ -602,7 +602,8 @@ object Form6: TForm6
     Top = 8
   end
   object Timer2: TTimer
-    Interval = 50
+    Interval = 2500
+    OnTimer = Timer2Timer
     Left = 432
     Top = 8
   end
