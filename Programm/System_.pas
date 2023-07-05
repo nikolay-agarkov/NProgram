@@ -20,13 +20,11 @@ type
     Panel3: TPanel;
     Image1: TImage;
     Image2: TImage;
-    Image3: TImage;
     Panel4: TPanel;
     Panel5: TPanel;
     Image4: TImage;
     Image5: TImage;
     Panel6: TPanel;
-    Image6: TImage;
     Panel7: TPanel;
     Panel8: TPanel;
     Panel9: TPanel;
@@ -96,11 +94,32 @@ type
     Label21: TLabel;
     N8: TMenuItem;
     N9: TMenuItem;
-    ADOConnection1: TADOConnection;
     SQLQuery1: TSQLQuery;
     SQLQuery2: TSQLQuery;
     Timer1: TTimer;
     Button4: TButton;
+    PC_connect: TPanel;
+    Image10: TImage;
+    Sensor_humidity_1: TPanel;
+    scan_error: TTimer;
+    query_scan_err: TSQLQuery;
+    Label22: TLabel;
+    Sensor_humidity_2: TPanel;
+    blink_error: TTimer;
+    gate_1: TPanel;
+    Gate_2: TPanel;
+    Gate_3: TPanel;
+    Gate1_level: TPanel;
+    Image11: TImage;
+    Gate3_level: TPanel;
+    Image12: TImage;
+    Gate2_level: TPanel;
+    Image13: TImage;
+    gate1_water_sensor: TPanel;
+    gate2_water_sensor: TPanel;
+    Image14: TImage;
+    gate3_water_sensor: TPanel;
+    Image3: TImage;
     procedure Timer_dateTimer(Sender: TObject);
     procedure N4Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -122,6 +141,8 @@ type
     procedure N9Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure scan_errorTimer(Sender: TObject);
+    procedure blink_errorTimer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -133,6 +154,7 @@ procedure con_sql;
 var
   Form1: TForm1;
   bd_c: boolean;
+  er1,er2,er3,er4,er5,er6,er7,er8,er9,er10,er11:boolean;
 implementation
 
 {$R *.dfm}
@@ -162,8 +184,7 @@ begin
     Form1.SQLConnection1.Params.Values['User_Name'] := user;
     Form1.SQLConnection1.Params.Values['port'] := port;
     Form1.SQLConnection1.Connected := True;
-//    form1.ADOConnection1.ConnectionString:='Provider=MSDASQL.1;Persist Security Info=False;Extended Properties="DSN=connect1;SERVER=127.0.0.1;UID=main_comp;DATABASE=test_water;PORT=3306"
-//form1.ADOConnection1.Connected:=true;
+
     Form1.Panel17.Caption := 'Связь с БД';
     Form1.Panel17.Color := clLime;
     bd_c:=true;
@@ -171,17 +192,19 @@ begin
     form1.T_bd_value_now.Enabled:=true;
     form7.timer_bd_sc.Enabled:=true;
     form1.Timer1.Enabled:=true;
-        form1.Button4.Enabled:=false;
+    form1.Button4.Enabled:=false;
+    form1.scan_error.enabled:=true;
   except
     Form1.Timer_bd.Enabled := False;
     Form1.Panel17.Caption := 'Связь с БД';
     Form1.Panel17.Color := clRed;
     bd_c:=false;
-        form1.Timer_bd.Enabled:=false;
+    form1.Timer_bd.Enabled:=false;
     form1.T_bd_value_now.Enabled:=false;
     form7.timer_bd_sc.Enabled:=false;
     form1.Timer1.Enabled:=false;
-         form1.Button4.Enabled:=true;
+    form1.Button4.Enabled:=true;
+    form1.scan_error.enabled:=false;
     MessageBox(Form1.Handle, 'Ошибка подключения БД', '', MB_ICONError);
   end;
 end;
@@ -220,6 +243,100 @@ begin
   begin
     Form1.Panel7.Color := clRed;
   end;
+end;
+
+procedure TForm1.blink_errorTimer(Sender: TObject);
+begin
+ if er1=true then
+ begin
+    if form1.gate_1.color=clRed then
+     form1.gate_1.color:=clSkyBlue
+    else
+     form1.gate_1.color:=clred;
+ end;
+
+ if er2=true then
+ begin
+    if form1.gate_2.color=clRed then
+     form1.gate_2.color:=clSkyBlue
+    else
+     form1.gate_2.color:=clred;
+ end;
+
+ if er3=true then
+ begin
+    if form1.gate_3.color=clRed then
+     form1.gate_3.color:=clSkyBlue
+    else
+     form1.gate_3.color:=clred;
+ end;
+
+ if er4=true then
+ begin
+    if form1.gate1_water_sensor.color=clRed then
+     form1.gate1_water_sensor.color:=clSkyBlue
+    else
+     form1.gate1_water_sensor.color:=clred;
+ end;
+
+  if er5=true then
+ begin
+    if form1.gate2_water_sensor.color=clRed then
+     form1.gate2_water_sensor.color:=clSkyBlue
+    else
+     form1.gate2_water_sensor.color:=clred;
+ end;
+
+  if er6=true then
+ begin
+    if form1.gate3_water_sensor.color=clRed then
+     form1.gate3_water_sensor.color:=clSkyBlue
+    else
+     form1.gate3_water_sensor.color:=clred;
+ end;
+
+
+ if er7=true then
+ begin
+    if form1.Gate1_level.color=clRed then
+     form1.Gate1_level.color:=clSkyBlue
+    else
+     form1.Gate1_level.color:=clred;
+ end;
+
+ if er8=true then
+ begin
+    if form1.Gate2_level.color=clRed then
+     form1.Gate2_level.color:=clSkyBlue
+    else
+     form1.Gate2_level.color:=clred;
+ end;
+
+ if er9=true then
+ begin
+    if form1.Gate3_level.color=clRed then
+     form1.Gate3_level.color:=clSkyBlue
+    else
+     form1.Gate3_level.color:=clred;
+ end;
+
+
+ if er10=true then
+ begin
+    if form1.Sensor_humidity_1.color=clRed then
+     form1.Sensor_humidity_1.color:=clgreen
+    else
+     form1.Sensor_humidity_1.color:=clred;
+ end;
+
+  if er11=true then
+ begin
+    if form1.Sensor_humidity_2.color=clRed then
+     form1.Sensor_humidity_2.color:=clgreen
+    else
+     form1.Sensor_humidity_2.color:=clred;
+ end;
+
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -329,6 +446,17 @@ begin
      form1.Visible:=false;
 
 
+    er1 :=false;
+    er2 :=false;
+    er3 :=false;
+    er4 :=false;
+    er5 :=false;
+    er6 :=false;
+    er7 :=false;
+    er8 :=false;
+    er9 :=false;
+    er10:=false;
+    er11:=false;
 
    form1.StringGrid3.Cells[0,0]:='Название затвора';
    form1.StringGrid3.Cells[1,0]:='Q = m^3/c';
@@ -436,6 +564,187 @@ procedure TForm1.RadioButton2Click(Sender: TObject);
 begin
   Panel15.Enabled := False;
   Panel15.Color := clBtnShadow;
+end;
+
+procedure TForm1.scan_errorTimer(Sender: TObject);
+var
+j, i :integer;
+
+begin
+if bd_c = true then
+begin
+  form1.query_scan_err.SQL.Clear;
+  Form1.query_scan_err.SQL.Add ('SELECT * FROM `ERROR`');
+  Form1.query_scan_err.Active := True;
+  Form1.query_scan_err.First;
+
+  for j := 1 to form1.query_scan_err.RecordCount do
+  begin
+    //затворы
+  if (form1.query_scan_err.fields[0].AsString='Gate1') then
+    if (form1.query_scan_err.fields[1].asstring='1') then
+      begin
+      if er1=false then
+        begin
+          form1.gate_1.Color:=clRed;
+          er1:=true;
+          MessageBox(Form1.Handle,PChar(form1.query_scan_err.Fields[2].AsString), '', MB_ICONINFORMATION);
+        end;
+      end else begin
+        er1:=false;
+        form1.gate_1.Color:=clSkyBlue;
+      end;
+
+  if (form1.query_scan_err.fields[0].AsString='Gate2') then
+    if (form1.query_scan_err.fields[1].asstring='1') then
+      begin
+      if er2=false then
+        begin
+          form1.gate_2.Color:=clRed;
+          er2:=true;
+          MessageBox(Form1.Handle,PChar(form1.query_scan_err.Fields[2].AsString), '', MB_ICONINFORMATION);
+        end;
+      end else begin
+        er2:=false;
+        form1.gate_2.Color:=clSkyBlue;
+      end;
+
+  if (form1.query_scan_err.fields[0].AsString='Gate3') then
+    if (form1.query_scan_err.fields[1].asstring='1') then
+      begin
+      if er3=false then
+        begin
+          form1.gate_3.Color:=clRed;
+          er3:=true;
+          MessageBox(Form1.Handle,PChar(form1.query_scan_err.Fields[2].AsString), '', MB_ICONINFORMATION);
+        end;
+      end else begin
+        er3:=false;
+        form1.gate_3.Color:=clSkyBlue;
+      end;
+
+  //  датчики уровня воды
+  if (form1.query_scan_err.fields[0].AsString='Senor_water_level_1') then
+    if (form1.query_scan_err.fields[1].asstring='1') then
+      begin
+      if er4=false then
+        begin
+          form1.gate1_water_sensor.Color:=clRed;
+          er4:=true;
+          MessageBox(Form1.Handle,PChar(form1.query_scan_err.Fields[2].AsString), '', MB_ICONINFORMATION);
+        end;
+      end else begin
+        er4:=false;
+        form1.gate1_water_sensor.Color:=clSkyBlue;
+      end;
+
+  if (form1.query_scan_err.fields[0].AsString='Senor_water_level_2') then
+    if (form1.query_scan_err.fields[1].asstring='1') then
+      begin
+      if er5=false then
+        begin
+          form1.gate2_water_sensor.Color:=clRed;
+          er5:=true;
+          MessageBox(Form1.Handle,PChar(form1.query_scan_err.Fields[2].AsString), '', MB_ICONINFORMATION);
+        end;
+      end else begin
+        er5:=false;
+        form1.gate2_water_sensor.Color:=clSkyBlue;
+      end;
+
+    if (form1.query_scan_err.fields[0].AsString='Senor_water_level_3') then
+    if (form1.query_scan_err.fields[1].asstring='1') then
+      begin
+      if er6=false then
+        begin
+          form1.gate3_water_sensor.Color:=clRed;
+          er6:=true;
+          MessageBox(Form1.Handle,PChar(form1.query_scan_err.Fields[2].AsString), '', MB_ICONINFORMATION);
+        end;
+      end else begin
+        er6:=false;
+        form1.gate3_water_sensor.Color:=clSkyBlue;
+      end;
+
+    //тросиковые датчики
+  if (form1.query_scan_err.fields[0].AsString='Sensor_gate_level_1') then
+    if (form1.query_scan_err.fields[1].asstring='1') then
+      begin
+      if er7=false then
+        begin
+          form1.Gate1_level.Color:=clRed;
+          er7:=true;
+          MessageBox(Form1.Handle,PChar(form1.query_scan_err.Fields[2].AsString), '', MB_ICONINFORMATION);
+        end;
+      end else begin
+        er7:=false;
+        form1.gate1_level.Color:=clSkyBlue;
+      end;
+
+
+   if (form1.query_scan_err.fields[0].AsString='Sensor_gate_level_2') then
+    if (form1.query_scan_err.fields[1].asstring='1') then
+      begin
+      if er8=false then
+        begin
+          form1.Gate2_level.Color:=clRed;
+          er8:=true;
+          MessageBox(Form1.Handle,PChar(form1.query_scan_err.Fields[2].AsString), '', MB_ICONINFORMATION);
+        end;
+      end else begin
+        er8:=false;
+        form1.gate2_level.Color:=clSkyBlue;
+      end;
+   if (form1.query_scan_err.fields[0].AsString='Sensor_gate_level_3') then
+    if (form1.query_scan_err.fields[1].asstring='1') then
+      begin
+      if er9=false then
+        begin
+          form1.Gate3_level.Color:=clRed;
+          er9:=true;
+          MessageBox(Form1.Handle,PChar(form1.query_scan_err.Fields[2].AsString), '', MB_ICONINFORMATION);
+        end;
+      end else begin
+        er9:=false;
+        form1.gate3_level.Color:=clSkyBlue;
+      end;
+
+
+  //датчики влажности
+  if (form1.query_scan_err.fields[0].AsString='Sensor_humidity_1') then
+    if (form1.query_scan_err.fields[1].asstring='1') then
+      begin
+      if er10=false then
+        begin
+          form1.Sensor_humidity_1.Color:=clRed;
+          er10:=true;
+          MessageBox(Form1.Handle,PChar(form1.query_scan_err.Fields[2].AsString), '', MB_ICONINFORMATION);
+        end;
+      end else begin
+        er10:=false;
+        form1.Sensor_humidity_1.Color:=clGreen;
+      end;
+
+  if (form1.query_scan_err.fields[0].AsString='Sensor_humidity_2') then
+    if (form1.query_scan_err.fields[1].asstring='1') then
+      begin
+      if er11=false then
+        begin
+          form1.Sensor_humidity_2.Color:=clRed;
+          er11:=true;
+          MessageBox(Form1.Handle,PChar(form1.query_scan_err.Fields[2].AsString), '', MB_ICONINFORMATION);
+        end;
+      end else begin
+        er11:=false;
+        form1.Sensor_humidity_2.Color:=clGreen;
+      end;
+
+  form1.query_scan_err.Next;
+  end;
+
+
+
+end;
 end;
 
 procedure TForm1.TabControl1Change(Sender: TObject);
@@ -583,9 +892,9 @@ begin
     Form1.SQLQuery2.Active := False;
     Form1.SQLQuery2.SQL.Clear;
     if form1.ComboBox1.Text='Все поля' then
-    Form1.SQLQuery2.SQL.Add  ('SELECT sensors_hum.name, sensor_values.id_sensors, sensor_values.hum_val, sensor_values.hum_val_proc, sensor_values.temp_val FROM `sensors_hum` RIGHT JOIN `sensor_values` on sensors_hum.id_sensors=sensor_values.id_sensors')
+    Form1.SQLQuery2.SQL.Add  ('SELECT sensors_hum.name, sensor_values.id_sensors, sensor_values.hum_val, sensor_values.hum_val_proc, sensor_values.temp_val FROM `sensors_hum` RIGHT JOIN `sensor_values` on sensors_hum.id_sensors=sensor_values.id_sensors where sensors_hum.Active="1"')
     else
-    Form1.SQLQuery2.SQL.Add  ('SELECT sensors_hum.name, sensor_values.id_sensors, sensor_values.hum_val, sensor_values.hum_val_proc, sensor_values.temp_val FROM `sensors_hum` RIGHT JOIN `sensor_values` on sensors_hum.id_sensors=sensor_values.id_sensors WHERE sensors_hum.id_pole='+form1.ComboBox1.Text);
+    Form1.SQLQuery2.SQL.Add  ('SELECT sensors_hum.name, sensor_values.id_sensors, sensor_values.hum_val, sensor_values.hum_val_proc, sensor_values.temp_val FROM `sensors_hum` RIGHT JOIN `sensor_values` on sensors_hum.id_sensors=sensor_values.id_sensors WHERE sensors_hum.id_pole='+form1.ComboBox1.Text+' and sensors_hum.Active="1"');
     Form1.SQLQuery2.Active := True;
     Form1.SQLQuery2.First;
     form1.StringGrid1.RowCount:= form1.SQLQuery2.RecordCount+1;
