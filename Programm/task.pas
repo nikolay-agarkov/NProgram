@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids, Vcl.ExtCtrls,
-  Vcl.WinXPickers;
+  Vcl.WinXPickers, Data.FMTBcd, Data.DB, Data.SqlExpr;
 
 type
   TForm7 = class(TForm)
@@ -44,6 +44,9 @@ type
     StringGrid2: TStringGrid;
     RadioButton1: TRadioButton;
     RadioButton2: TRadioButton;
+    task_h: TTimer;
+    task_t: TTimer;
+    sql_task_h: TSQLQuery;
     procedure FormCreate(Sender: TObject);
     procedure timer_bd_scTimer(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -52,6 +55,7 @@ type
     procedure Button3Click(Sender: TObject);
     procedure RadioButton2Click(Sender: TObject);
     procedure RadioButton1Click(Sender: TObject);
+    procedure task_hTimer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -71,27 +75,27 @@ procedure TForm7.Button1Click(Sender: TObject);
 var
 s1,s2:string;
 t1,t2:TDatetime;
-begin
+  begin
 
-t1:=form7.TimePicker1.Time;
-DateTimeToString(s1,'hh:mm:ss',t1) ;
-t2:=form7.TimePicker2.Time;
-DateTimeToString(s2,'hh:mm:ss',t2) ;
+  t1:=form7.TimePicker1.Time;
+  DateTimeToString(s1,'hh:mm:ss',t1) ;
+  t2:=form7.TimePicker2.Time;
+  DateTimeToString(s2,'hh:mm:ss',t2) ;
 
-if (form7.Edit1.Text='') or (s1=s2) then
-begin
-  showmessage ('Ошибка! Проверьте введенные данные');
-end
-else
-begin
-    Form1.SQLQuery2.Active := False;
-    Form1.SQLQuery2.SQL.Clear;
-    Form1.SQLQuery2.SQL.Add  ('INSERT INTO `task_schedule`( `ID_Zatvor`, `Time_Open`, `Time_Close`) VALUES ('+QuotedStr(edit1.text)+','+QuotedStr(s1)+','+QuotedStr(s2)+')') ;
-    Form1.SQLQuery2.ExecSQL();
-    Form1.SQLQuery2.SQL.Clear;
-     showmessage ('Данная задача успешно добавлена');
+  if (form7.Edit1.Text='') or (s1=s2) then
+  begin
+    showmessage ('Ошибка! Проверьте введенные данные');
+  end
+  else
+  begin
+      Form1.SQLQuery2.Active := False;
+      Form1.SQLQuery2.SQL.Clear;
+      Form1.SQLQuery2.SQL.Add  ('INSERT INTO `task_schedule`( `ID_Zatvor`, `Time_Open`, `Time_Close`) VALUES ('+QuotedStr(edit1.text)+','+QuotedStr(s1)+','+QuotedStr(s2)+')') ;
+      Form1.SQLQuery2.ExecSQL();
+      Form1.SQLQuery2.SQL.Clear;
+       showmessage ('Данная задача успешно добавлена');
 
-end;
+  end;
 
 end;
 
@@ -159,6 +163,14 @@ end;
 
 procedure TForm7.FormCreate(Sender: TObject);
 begin
+    if form7.RadioButton2.Checked=true then
+    begin
+      panel4.Enabled:=true;
+      panel4.Color:=clBtnFace;
+      panel2.Color:=clMedGray;
+      panel2.Enabled:=false;
+    end;
+
    form7.StringGrid1.Cells[0,0]:='# задачи';
    form7.StringGrid1.Cells[1,0]:='# Затвора';
    form7.StringGrid1.Cells[2,0]:='Время открытия затвора';
@@ -168,7 +180,13 @@ begin
    form7.StringGrid2.Cells[1,0]:='# Затвора';
    form7.StringGrid2.Cells[2,0]:='% влажности минимальный';
    form7.StringGrid2.Cells[3,0]:='% влажности максимальный';
-
+   if bd_c=true then
+   begin
+     if form7.RadioButton2.Checked=true then
+        form7.task_h.Enabled:=true;
+     if form7.RadioButton1.Checked=true then
+        form7.task_t.Enabled:=true;
+   end;
 
 end;
 
@@ -180,6 +198,8 @@ panel4.Color:=clMedGray;
 panel4.Enabled:=false;
 form7.RadioButton1.Checked:=true;
 form7.RadioButton2.Checked:=false;
+task_h.Enabled:=true;
+task_t.Enabled:=false;
 
 end;
 
@@ -192,6 +212,19 @@ panel2.Enabled:=false;
 form7.RadioButton2.Checked:=true;
 form7.RadioButton1.Checked:=false;
 
+task_h.Enabled:=true;
+task_t.Enabled:=false;
+end;
+
+procedure TForm7.task_hTimer(Sender: TObject);
+var
+i,j: integer;
+begin
+    form7.sql_task_h.active := False;
+    form7.sql_task_h.SQL.Clear;
+//    form7.sql_task_h.SQL.Add  ('') ;
+    form7.sql_task_h.Active := True;
+    form7.sql_task_h.First;
 end;
 
 procedure TForm7.timer_bd_scTimer(Sender: TObject);
@@ -200,8 +233,6 @@ i, j : integer;
 begin
 
     for i := StringGrid1.FixedRows to StringGrid1.RowCount - 1 do StringGrid1.Rows[i].Clear;
-
-
     Form1.SQLQuery2.Active := False;
     Form1.SQLQuery2.SQL.Clear;
     Form1.SQLQuery2.SQL.Add  ('SELECT * FROM `task_schedule`') ;

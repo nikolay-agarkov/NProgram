@@ -4,7 +4,7 @@ object Form1: TForm1
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1048#1085#1092#1086#1088#1084#1072#1094#1080#1103' '#1086' '#1089#1080#1089#1090#1077#1084#1077
-  ClientHeight = 476
+  ClientHeight = 514
   ClientWidth = 1313
   Color = clSilver
   Font.Charset = DEFAULT_CHARSET
@@ -424,7 +424,7 @@ object Form1: TForm1
     Left = 0
     Top = 0
     Width = 1313
-    Height = 441
+    Height = 465
     Align = alTop
     Caption = 'Top_main_panel'
     TabOrder = 0
@@ -433,7 +433,7 @@ object Form1: TForm1
       Left = 1
       Top = 1
       Width = 497
-      Height = 439
+      Height = 463
       Align = alLeft
       Alignment = taLeftJustify
       Color = clMoneyGreen
@@ -732,7 +732,7 @@ object Form1: TForm1
             object Label21: TLabel
               Left = 10
               Top = 24
-              Width = 6
+              Width = 7
               Height = 15
               Caption = '2'
               Color = clNone
@@ -766,7 +766,7 @@ object Form1: TForm1
             object Label20: TLabel
               Left = 10
               Top = 24
-              Width = 22
+              Width = 7
               Height = 15
               Caption = '3'
             end
@@ -1428,7 +1428,7 @@ object Form1: TForm1
       Left = 497
       Top = 57
       Width = 321
-      Height = 391
+      Height = 500
       Alignment = taLeftJustify
       Color = clWhite
       ParentBackground = False
@@ -2025,221 +2025,438 @@ object Form1: TForm1
           OnClick = RadioButton2Click
         end
       end
-      object Panel15: TPanel
-        Left = 1
-        Top = 113
-        Width = 319
-        Height = 277
-        Align = alClient
-        Color = clBtnShadow
+      object Panel15: TPageControl
+        Left = 7
+        Top = 119
+        Width = 299
+        Height = 289
+        ActivePage = TabSheet3
         Enabled = False
-        ParentBackground = False
         TabOrder = 2
-        object GroupBox1: TGroupBox
-          Left = 6
-          Top = 6
-          Width = 307
-          Height = 91
+        object TabSheet1: TTabSheet
           Caption = #1047#1072#1090#1074#1086#1088' 1'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Segoe UI'
-          Font.Style = [fsBold, fsItalic, fsUnderline]
-          ParentFont = False
-          TabOrder = 0
-          object Label7: TLabel
-            Left = 16
-            Top = 24
-            Width = 116
-            Height = 21
-            Caption = #1057#1090#1072#1090#1091#1089' '#1079#1072#1090#1074#1086#1088#1072
+          object GroupBox1: TGroupBox
+            Left = 0
+            Top = 0
+            Width = 291
+            Height = 259
+            Align = alClient
+            Color = cl3DDkShadow
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -16
             Font.Name = 'Segoe UI'
-            Font.Style = [fsBold, fsUnderline]
-            ParentFont = False
-          end
-          object Label8: TLabel
-            Left = 159
-            Top = 24
-            Width = 9
-            Height = 21
-            Caption = '1'
-          end
-          object Label9: TLabel
-            Left = 272
-            Top = 24
-            Width = 9
-            Height = 21
-            Caption = '1'
-          end
-          object ProgressBar1: TProgressBar
-            Left = 184
-            Top = 59
-            Width = 120
-            Height = 17
-            ParentShowHint = False
-            Smooth = True
-            MarqueeInterval = 1
-            SmoothReverse = True
-            Step = 1
-            ShowHint = True
-            TabOrder = 0
-          end
-          object Button1: TButton
-            Left = 16
-            Top = 51
-            Width = 162
-            Height = 25
-            Caption = #1054#1090#1082#1088#1099#1090#1100'/'#1079#1072#1082#1088#1099#1090#1100
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'Segoe UI'
             Font.Style = [fsBold, fsItalic, fsUnderline]
+            ParentBackground = False
+            ParentColor = False
             ParentFont = False
-            TabOrder = 1
-            OnClick = Button1Click
+            TabOrder = 0
+            object Label7: TLabel
+              Left = 16
+              Top = 16
+              Width = 94
+              Height = 17
+              Caption = #1057#1090#1072#1090#1091#1089' '#1079#1072#1090#1074#1086#1088#1072
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 17
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label8: TLabel
+              Left = 191
+              Top = 21
+              Width = 7
+              Height = 17
+              Caption = '1'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 17
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+            end
+            object Label9: TLabel
+              Left = 129
+              Top = 180
+              Width = 7
+              Height = 15
+              Caption = '1'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+            end
+            object Label24: TLabel
+              Left = 16
+              Top = 95
+              Width = 118
+              Height = 15
+              Caption = #1058#1088#1077#1073#1091#1077#1084#1099#1081' '#1091#1088#1086#1074#1077#1085#1100
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label25: TLabel
+              Left = 16
+              Top = 159
+              Width = 107
+              Height = 15
+              Caption = #1058#1077#1082#1091#1097#1080#1081' '#1091#1088#1086#1074#1077#1085#1100':'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Button1: TButton
+              Left = 16
+              Top = 43
+              Width = 149
+              Height = 30
+              Caption = #1054#1090#1082#1088#1099#1090#1100'/'#1079#1072#1082#1088#1099#1090#1100
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+              TabOrder = 0
+              OnClick = Button1Click
+            end
+            object gate1_t_level: TEdit
+              Left = 19
+              Top = 180
+              Width = 54
+              Height = 23
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 1
+            end
+            object gate1_n_level: TEdit
+              Left = 25
+              Top = 116
+              Width = 104
+              Height = 23
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              NumbersOnly = True
+              ParentFont = False
+              TabOrder = 2
+              Text = '0'
+            end
+            object ProgressBar1: TProgressBar
+              Left = 179
+              Top = 44
+              Width = 97
+              Height = 192
+              Orientation = pbVertical
+              TabOrder = 3
+            end
           end
         end
-        object GroupBox2: TGroupBox
-          Left = 6
-          Top = 88
-          Width = 307
-          Height = 91
+        object TabSheet2: TTabSheet
           Caption = #1047#1072#1090#1074#1086#1088' 2'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Segoe UI'
-          Font.Style = [fsBold, fsItalic, fsUnderline]
-          ParentFont = False
-          TabOrder = 1
-          object Label10: TLabel
-            Left = 16
-            Top = 24
-            Width = 116
-            Height = 21
-            Caption = #1057#1090#1072#1090#1091#1089' '#1079#1072#1090#1074#1086#1088#1072
+          ImageIndex = 1
+          object GroupBox2: TGroupBox
+            Left = 3
+            Top = 3
+            Width = 285
+            Height = 253
+            Color = clMoneyGreen
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -16
             Font.Name = 'Segoe UI'
-            Font.Style = [fsBold, fsUnderline]
-            ParentFont = False
-          end
-          object Label11: TLabel
-            Left = 159
-            Top = 24
-            Width = 9
-            Height = 21
-            Caption = '1'
-          end
-          object Label12: TLabel
-            Left = 272
-            Top = 24
-            Width = 9
-            Height = 21
-            Caption = '1'
-          end
-          object ProgressBar2: TProgressBar
-            Left = 184
-            Top = 59
-            Width = 120
-            Height = 17
-            ParentShowHint = False
-            Smooth = True
-            MarqueeInterval = 1
-            SmoothReverse = True
-            Step = 1
-            ShowHint = True
-            TabOrder = 0
-          end
-          object Button2: TButton
-            Left = 16
-            Top = 51
-            Width = 162
-            Height = 25
-            Caption = #1054#1090#1082#1088#1099#1090#1100'/'#1079#1072#1082#1088#1099#1090#1100
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'Segoe UI'
             Font.Style = [fsBold, fsItalic, fsUnderline]
+            ParentBackground = False
+            ParentColor = False
             ParentFont = False
-            TabOrder = 1
-            OnClick = Button2Click
+            TabOrder = 0
+            object Label10: TLabel
+              Left = 16
+              Top = 16
+              Width = 94
+              Height = 17
+              Caption = #1057#1090#1072#1090#1091#1089' '#1079#1072#1090#1074#1086#1088#1072
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 17
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label11: TLabel
+              Left = 175
+              Top = 16
+              Width = 7
+              Height = 17
+              Caption = '1'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 17
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+            end
+            object Label12: TLabel
+              Left = 128
+              Top = 172
+              Width = 7
+              Height = 17
+              Caption = '1'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 17
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+            end
+            object Label26: TLabel
+              Left = 16
+              Top = 87
+              Width = 118
+              Height = 15
+              Caption = #1058#1088#1077#1073#1091#1077#1084#1099#1081' '#1091#1088#1086#1074#1077#1085#1100
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label27: TLabel
+              Left = 16
+              Top = 151
+              Width = 107
+              Height = 15
+              Caption = #1058#1077#1082#1091#1097#1080#1081' '#1091#1088#1086#1074#1077#1085#1100':'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object ProgressBar2: TProgressBar
+              Left = 167
+              Top = 47
+              Width = 99
+              Height = 186
+              Orientation = pbVertical
+              ParentShowHint = False
+              Smooth = True
+              MarqueeInterval = 1
+              SmoothReverse = True
+              Step = 1
+              ShowHint = True
+              TabOrder = 0
+            end
+            object Button2: TButton
+              Left = 16
+              Top = 39
+              Width = 145
+              Height = 26
+              Caption = #1054#1090#1082#1088#1099#1090#1100'/'#1079#1072#1082#1088#1099#1090#1100
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+              TabOrder = 1
+              OnClick = Button2Click
+            end
+            object gate2_t_level: TEdit
+              Left = 19
+              Top = 172
+              Width = 54
+              Height = 23
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 2
+            end
+            object gate2_n_level: TEdit
+              Left = 25
+              Top = 108
+              Width = 104
+              Height = 23
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              NumbersOnly = True
+              ParentFont = False
+              TabOrder = 3
+              Text = '0'
+            end
           end
         end
-        object GroupBox3: TGroupBox
-          Left = 6
-          Top = 170
-          Width = 307
-          Height = 91
+        object TabSheet3: TTabSheet
           Caption = #1047#1072#1090#1074#1086#1088' 3'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Segoe UI'
-          Font.Style = [fsBold, fsItalic, fsUnderline]
-          ParentFont = False
-          TabOrder = 2
-          object Label13: TLabel
-            Left = 16
-            Top = 24
-            Width = 116
-            Height = 21
-            Caption = #1057#1090#1072#1090#1091#1089' '#1079#1072#1090#1074#1086#1088#1072
+          ImageIndex = 2
+          object GroupBox3: TGroupBox
+            Left = 3
+            Top = 0
+            Width = 285
+            Height = 256
+            Color = clMoneyGreen
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -16
             Font.Name = 'Segoe UI'
-            Font.Style = [fsBold, fsUnderline]
-            ParentFont = False
-          end
-          object Label14: TLabel
-            Left = 159
-            Top = 24
-            Width = 9
-            Height = 21
-            Caption = '1'
-          end
-          object Label15: TLabel
-            Left = 272
-            Top = 24
-            Width = 9
-            Height = 21
-            Caption = '1'
-          end
-          object ProgressBar3: TProgressBar
-            Left = 184
-            Top = 59
-            Width = 120
-            Height = 17
-            ParentShowHint = False
-            Smooth = True
-            MarqueeInterval = 1
-            SmoothReverse = True
-            Step = 1
-            ShowHint = True
-            TabOrder = 0
-          end
-          object Button3: TButton
-            Left = 16
-            Top = 51
-            Width = 162
-            Height = 25
-            Caption = #1054#1090#1082#1088#1099#1090#1100'/'#1079#1072#1082#1088#1099#1090#1100
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'Segoe UI'
             Font.Style = [fsBold, fsItalic, fsUnderline]
+            ParentBackground = False
+            ParentColor = False
             ParentFont = False
-            TabOrder = 1
-            OnClick = Button3Click
+            TabOrder = 0
+            object Label13: TLabel
+              Left = 16
+              Top = 16
+              Width = 94
+              Height = 17
+              Caption = #1057#1090#1072#1090#1091#1089' '#1079#1072#1090#1074#1086#1088#1072
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 17
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label14: TLabel
+              Left = 175
+              Top = 16
+              Width = 7
+              Height = 17
+              Caption = '1'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 17
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+            end
+            object Label15: TLabel
+              Left = 136
+              Top = 180
+              Width = 7
+              Height = 17
+              Caption = '1'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 17
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+            end
+            object Label28: TLabel
+              Left = 24
+              Top = 95
+              Width = 118
+              Height = 15
+              Caption = #1058#1088#1077#1073#1091#1077#1084#1099#1081' '#1091#1088#1086#1074#1077#1085#1100
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label29: TLabel
+              Left = 24
+              Top = 159
+              Width = 107
+              Height = 15
+              Caption = #1058#1077#1082#1091#1097#1080#1081' '#1091#1088#1086#1074#1077#1085#1100':'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object ProgressBar3: TProgressBar
+              Left = 175
+              Top = 47
+              Width = 103
+              Height = 186
+              Orientation = pbVertical
+              ParentShowHint = False
+              Smooth = True
+              MarqueeInterval = 1
+              SmoothReverse = True
+              Step = 1
+              ShowHint = True
+              TabOrder = 0
+            end
+            object Button3: TButton
+              Left = 16
+              Top = 47
+              Width = 153
+              Height = 25
+              Caption = #1054#1090#1082#1088#1099#1090#1100'/'#1079#1072#1082#1088#1099#1090#1100
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+              TabOrder = 1
+              OnClick = Button3Click
+            end
+            object gate3_t_level: TEdit
+              Left = 27
+              Top = 180
+              Width = 54
+              Height = 23
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 2
+            end
+            object gate3_n_level: TEdit
+              Left = 33
+              Top = 116
+              Width = 104
+              Height = 23
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              NumbersOnly = True
+              ParentFont = False
+              TabOrder = 3
+              Text = '0'
+            end
           end
         end
       end
@@ -2305,205 +2522,253 @@ object Form1: TForm1
       Left = 814
       Top = 1
       Width = 498
-      Height = 439
+      Height = 463
       Align = alRight
       TabOrder = 3
       ExplicitLeft = 810
-      object TabControl1: TTabControl
+      object PageControl1: TPageControl
         Left = 1
         Top = 1
         Width = 496
-        Height = 437
+        Height = 461
+        ActivePage = TabSheet4
         Align = alClient
         TabOrder = 0
-        Tabs.Strings = (
-          '1'
-          '2'
-          '3')
-        TabIndex = 0
-        OnChange = TabControl1Change
-        object Panel_tab1: TPanel
-          Left = 4
-          Top = 26
-          Width = 488
-          Height = 407
-          Align = alClient
-          TabOrder = 0
-          object Label16: TLabel
-            Left = 88
-            Top = 15
-            Width = 271
-            Height = 21
-            Caption = #1058#1077#1082#1091#1097#1080#1077' '#1087#1086#1082#1072#1079#1072#1085#1080#1103' '#1076#1072#1090#1095#1080#1082#1086#1074' '#1085#1072' '#1087#1086#1083#1077
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -16
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
-          end
-          object StringGrid1: TStringGrid
-            AlignWithMargins = True
-            Left = 4
-            Top = 70
-            Width = 480
-            Height = 333
-            Align = alBottom
-            FixedCols = 0
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
+        object TabSheet4: TTabSheet
+          Caption = #1042#1083#1072#1078#1085#1086#1089#1090#1100' '#1085#1072' '#1087#1086#1083#1077
+          object Panel_tab1: TPanel
+            Left = 0
+            Top = 0
+            Width = 488
+            Height = 431
+            Align = alClient
             TabOrder = 0
-            ColWidths = (
-              110
-              62
-              92
-              84
-              133)
-          end
-          object ComboBox1: TComboBox
-            Left = 376
-            Top = 14
-            Width = 97
-            Height = 22
-            Style = csOwnerDrawFixed
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ImeMode = imDisable
-            ItemIndex = 0
-            ParentFont = False
-            TabOrder = 1
-            Text = '1'
-            Items.Strings = (
-              '1'
-              '2'
-              #1042#1089#1077' '#1087#1086#1083#1103)
+            object Label16: TLabel
+              Left = 88
+              Top = 15
+              Width = 271
+              Height = 21
+              Caption = #1058#1077#1082#1091#1097#1080#1077' '#1087#1086#1082#1072#1079#1072#1085#1080#1103' '#1076#1072#1090#1095#1080#1082#1086#1074' '#1085#1072' '#1087#1086#1083#1077
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label30: TLabel
+              Left = 56
+              Top = 42
+              Width = 304
+              Height = 21
+              Caption = #1057#1088#1077#1076#1085#1077#1077' '#1087#1086#1082#1072#1079#1072#1085#1080#1077' '#1074#1089#1077#1093' '#1076#1072#1090#1095#1080#1082#1086#1074' '#1085#1072' '#1087#1086#1083#1077
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+            end
+            object sr_hum_sensor: TLabel
+              Left = 376
+              Top = 42
+              Width = 65
+              Height = 21
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label31: TLabel
+              Left = 431
+              Top = 42
+              Width = 13
+              Height = 21
+              Caption = '%'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+            end
+            object StringGrid1: TStringGrid
+              AlignWithMargins = True
+              Left = 4
+              Top = 94
+              Width = 480
+              Height = 333
+              Align = alBottom
+              FixedCols = 0
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 0
+              ColWidths = (
+                110
+                62
+                92
+                84
+                133)
+            end
+            object ComboBox1: TComboBox
+              Left = 376
+              Top = 14
+              Width = 97
+              Height = 22
+              Style = csOwnerDrawFixed
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ImeMode = imDisable
+              ItemIndex = 0
+              ParentFont = False
+              TabOrder = 1
+              Text = '1'
+              Items.Strings = (
+                '1'
+                '2'
+                #1042#1089#1077' '#1087#1086#1083#1103)
+            end
           end
         end
-        object Panel_tab2: TPanel
-          Left = 4
-          Top = 26
-          Width = 488
-          Height = 407
-          Align = alClient
-          TabOrder = 1
-          Visible = False
-          object Label17: TLabel
-            Left = 134
-            Top = 15
-            Width = 190
-            Height = 21
-            Caption = #1059#1088#1086#1074#1085#1080' '#1087#1086' '#1075#1080#1076#1088#1086#1087#1086#1089#1090#1072#1084', '#1084
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -16
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label19: TLabel
-            Left = 142
-            Top = 191
-            Width = 170
-            Height = 21
-            Caption = #1055#1086#1083#1086#1078#1077#1085#1080#1077' '#1079#1072#1090#1074#1086#1088#1086#1074', '#1084
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -16
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
-          end
-          object StringGrid2: TStringGrid
-            AlignWithMargins = True
-            Left = 5
-            Top = 42
-            Width = 480
-            Height = 151
-            BorderStyle = bsNone
-            ColCount = 2
-            FixedCols = 0
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
+        object TabSheet5: TTabSheet
+          Caption = #1043#1080#1076#1088#1086#1087#1086#1089#1090#1099'/'#1079#1072#1090#1074#1086#1088#1099
+          ImageIndex = 1
+          object Panel_tab2: TPanel
+            Left = 0
+            Top = 0
+            Width = 488
+            Height = 431
+            Align = alClient
             TabOrder = 0
-            ColWidths = (
-              200
-              233)
-          end
-          object StringGrid4: TStringGrid
-            AlignWithMargins = True
-            Left = 5
-            Top = 218
-            Width = 480
-            Height = 151
-            BorderStyle = bsNone
-            ColCount = 3
-            FixedCols = 0
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 1
-            ColWidths = (
-              151
-              123
-              127)
+            object Label17: TLabel
+              Left = 134
+              Top = 15
+              Width = 190
+              Height = 21
+              Caption = #1059#1088#1086#1074#1085#1080' '#1087#1086' '#1075#1080#1076#1088#1086#1087#1086#1089#1090#1072#1084', '#1084
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label19: TLabel
+              Left = 142
+              Top = 191
+              Width = 170
+              Height = 21
+              Caption = #1055#1086#1083#1086#1078#1077#1085#1080#1077' '#1079#1072#1090#1074#1086#1088#1086#1074', '#1084
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+            end
+            object StringGrid2: TStringGrid
+              AlignWithMargins = True
+              Left = 5
+              Top = 42
+              Width = 480
+              Height = 151
+              BorderStyle = bsNone
+              ColCount = 2
+              FixedCols = 0
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 0
+              ColWidths = (
+                200
+                233)
+            end
+            object StringGrid4: TStringGrid
+              AlignWithMargins = True
+              Left = 5
+              Top = 218
+              Width = 480
+              Height = 151
+              BorderStyle = bsNone
+              ColCount = 3
+              FixedCols = 0
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 1
+              ColWidths = (
+                151
+                123
+                127)
+            end
           end
         end
-        object Panel_tab3: TPanel
-          Left = 4
-          Top = 26
-          Width = 488
-          Height = 407
-          Align = alClient
-          TabOrder = 2
-          Visible = False
-          object Label18: TLabel
-            Left = 134
-            Top = 15
-            Width = 196
-            Height = 21
-            Caption = #1056#1072#1089#1093#1086#1076' '#1074#1086#1076#1099' '#1087#1086' '#1074#1086#1076#1086#1074#1086#1076#1072#1084
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -16
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
-          end
-          object StringGrid3: TStringGrid
-            AlignWithMargins = True
-            Left = 4
-            Top = 70
-            Width = 480
-            Height = 333
-            Align = alBottom
-            BorderStyle = bsNone
-            ColCount = 3
-            FixedCols = 0
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
+        object TabSheet6: TTabSheet
+          Caption = #1056#1072#1089#1093#1086#1076' '#1074#1086#1076#1099
+          ImageIndex = 2
+          object Panel_tab3: TPanel
+            Left = 0
+            Top = 0
+            Width = 488
+            Height = 431
+            Align = alClient
             TabOrder = 0
-            ColWidths = (
-              167
-              111
-              169)
+            ExplicitLeft = 4
+            ExplicitTop = 26
+            ExplicitWidth = 393
+            ExplicitHeight = 407
+            object Label18: TLabel
+              Left = 134
+              Top = 15
+              Width = 196
+              Height = 21
+              Caption = #1056#1072#1089#1093#1086#1076' '#1074#1086#1076#1099' '#1087#1086' '#1074#1086#1076#1086#1074#1086#1076#1072#1084
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+            end
+            object StringGrid3: TStringGrid
+              AlignWithMargins = True
+              Left = 4
+              Top = 94
+              Width = 480
+              Height = 333
+              Align = alBottom
+              BorderStyle = bsNone
+              ColCount = 3
+              FixedCols = 0
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 0
+              ExplicitTop = 70
+              ExplicitWidth = 385
+              ColWidths = (
+                167
+                111
+                169)
+            end
           end
         end
       end
@@ -2511,16 +2776,23 @@ object Form1: TForm1
   end
   object Panel16: TPanel
     Left = 0
-    Top = 433
+    Top = 471
     Width = 1313
     Height = 43
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = -1
-    ExplicitTop = 437
+    ExplicitTop = 470
+    ExplicitWidth = 1309
     object Label22: TLabel
-      Left = 560
-      Top = 8
+      Left = 753
+      Top = 14
+      Width = 40
+      Height = 15
+      Caption = 'Label22'
+    end
+    object Label23: TLabel
+      Left = 683
+      Top = 14
       Width = 40
       Height = 15
       Caption = 'Label22'
@@ -2603,7 +2875,7 @@ object Form1: TForm1
     object PC_connect: TPanel
       Left = 337
       Top = 2
-      Width = 144
+      Width = 217
       Height = 41
       Color = clWhite
       ParentBackground = False
@@ -2722,7 +2994,7 @@ object Form1: TForm1
     Enabled = False
     OnTimer = Timer_bdTimer
     Left = 904
-    Top = 312
+    Top = 304
   end
   object T_bd_value_now: TTimer
     Enabled = False
@@ -2748,26 +3020,33 @@ object Form1: TForm1
     Enabled = False
     Interval = 100
     OnTimer = Timer1Timer
-    Left = 977
-    Top = 314
+    Left = 833
+    Top = 370
   end
   object scan_error: TTimer
     Enabled = False
     OnTimer = scan_errorTimer
-    Left = 832
+    Left = 872
     Top = 242
   end
   object query_scan_err: TSQLQuery
     MaxBlobSize = -1
     Params = <>
     SQLConnection = SQLConnection1
-    Left = 1043
-    Top = 268
+    Left = 963
+    Top = 244
   end
   object blink_error: TTimer
     Interval = 500
     OnTimer = blink_errorTimer
-    Left = 896
-    Top = 240
+    Left = 968
+    Top = 312
+  end
+  object program_check: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection1
+    Left = 1051
+    Top = 244
   end
 end

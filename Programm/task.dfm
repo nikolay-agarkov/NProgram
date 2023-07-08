@@ -406,14 +406,36 @@ object Form7: TForm7
       Width = 113
       Height = 17
       Caption = #1040#1082#1090#1080#1074#1080#1088#1086#1074#1072#1090#1100
+      Checked = True
       TabOrder = 2
+      TabStop = True
       OnClick = RadioButton2Click
     end
   end
   object timer_bd_sc: TTimer
     Enabled = False
     OnTimer = timer_bd_scTimer
-    Left = 713
+    Left = 705
     Top = 16
+  end
+  object task_h: TTimer
+    Enabled = False
+    Interval = 1500
+    OnTimer = task_hTimer
+    Left = 32
+    Top = 384
+  end
+  object task_t: TTimer
+    Enabled = False
+    Interval = 1500
+    Left = 32
+    Top = 136
+  end
+  object sql_task_h: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = Form1.SQLConnection1
+    Left = 104
+    Top = 385
   end
 end
