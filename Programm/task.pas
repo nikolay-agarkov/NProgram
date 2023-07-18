@@ -56,6 +56,7 @@ type
     procedure RadioButton2Click(Sender: TObject);
     procedure RadioButton1Click(Sender: TObject);
     procedure task_hTimer(Sender: TObject);
+    procedure task_tTimer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -198,8 +199,8 @@ panel4.Color:=clMedGray;
 panel4.Enabled:=false;
 form7.RadioButton1.Checked:=true;
 form7.RadioButton2.Checked:=false;
-task_h.Enabled:=true;
-task_t.Enabled:=false;
+task_t.Enabled:=true;
+task_h.Enabled:=false;
 
 end;
 
@@ -219,12 +220,147 @@ end;
 procedure TForm7.task_hTimer(Sender: TObject);
 var
 i,j: integer;
+m_min, m_max, m_zatvor: integer;
+m_avv: double;
+st:string;
 begin
+// ќбработка автоматизации на датчиках влажности
+
     form7.sql_task_h.active := False;
     form7.sql_task_h.SQL.Clear;
-//    form7.sql_task_h.SQL.Add  ('') ;
-    form7.sql_task_h.Active := True;
-    form7.sql_task_h.First;
+    for i := 1 to 3 do // id затвора
+    begin
+      form7.sql_task_h.SQL.Add  ('select task_humidity.ID_Zatvor,  task_humidity.min, task_humidity.max, status_zatvor.average_value_h, status_zatvor.status FROM task_humidity inner JOIN status_zatvor ON status_zatvor.id= task_humidity.ID_Zatvor WHERE task_humidity.ID_Zatvor="'+inttostr(i)+'"');
+      form7.sql_task_h.Active := True;
+
+
+      if form7.sql_task_h.RecordCount>0 then
+      begin
+      form7.sql_task_h.First;
+      st:=form7.sql_task_h.Fields[1].AsString;
+
+        m_min:=strtoint(form7.sql_task_h.Fields[1].AsString);
+        m_max:=strtoint(form7.sql_task_h.Fields[2].AsString);
+        m_avv:=form7.sql_task_h.Fields[3].AsFloat;
+        m_zatvor:=form7.sql_task_h.Fields[4].AsInteger;
+
+      //Ћогическое услови€ открыти€ затворов и закрыти€ затворов
+        if (m_zatvor = 1 ) and (m_avv > m_max)  then begin
+          form7.sql_task_h.active := False;
+          form7.sql_task_h.SQL.Clear;
+          form7.sql_task_h.SQL.Add
+           ('UPDATE `status_zatvor` SET `status` ="0", `open_level`="0" where `id` ="'+inttostr(i)+'" ');
+          Form7.sql_task_h.ExecSQL();
+        end else
+        if (m_zatvor = 0 ) and (m_avv < m_min)  then begin
+          form7.sql_task_h.active := False;
+          form7.sql_task_h.SQL.Clear;
+          form7.sql_task_h.SQL.Add
+           ('UPDATE `status_zatvor` SET `status` ="1", `open_level`="100" where `id` ="'+inttostr(i)+'" ');
+          Form7.sql_task_h.ExecSQL();
+        end;
+
+      end;
+     form7.sql_task_h.active := False;
+     form7.sql_task_h.SQL.Clear;
+
+   end;
+
+end;
+
+procedure TForm7.task_tTimer(Sender: TObject);
+var
+i,j: integer;
+t_h_o, t_m_o, t_h_c, t_m_c, tn_h, tn_m, status_gate: integer;
+
+st, t_open, t_close:string;
+Res2: TDateTime;
+begin
+// ќбработка автоматизации на времени
+
+
+    Res2 := Time;
+    st:=form1.Label6.Caption;
+    tn_h:= strtoint(copy(st,0,2));
+    tn_m:=  strtoint(copy(st,4,2));
+    form7.sql_task_h.active := False;
+//  showmessage (st);
+//  showmessage(inttostr(tn_m));
+   for i := 1 to 3 do // id затвора
+    begin
+
+      form7.sql_task_h.SQL.Clear;
+      form7.sql_task_h.SQL.Add  ('select task_schedule.ID_Zatvor, task_schedule.Time_Open, task_schedule.Time_Close, status_zatvor.status FROM task_schedule INNER JOIN status_zatvor on status_zatvor.id= task_schedule.ID_Zatvor WHERE task_schedule.ID_Zatvor="'+inttostr(i)+'"');
+      form7.sql_task_h.Active := True;
+
+
+     if form7.sql_task_h.RecordCount>0 then
+     begin
+        form7.sql_task_h.First;
+        t_open:=form7.sql_task_h.Fields[1].AsString;
+        t_close:=form7.sql_task_h.Fields[2].AsString;
+        t_h_o:=strtoint(copy(t_open,0,2));
+        t_m_o:=strtoint(copy(t_open,4,2));
+        t_h_c:=strtoint(copy(t_close,0,2));
+        t_m_c:=strtoint(copy(t_close,4,2));
+        status_gate:=form7.sql_task_h.Fields[3].AsInteger;
+        //Ћогическое услови€ открыти€ затворов и закрыти€ затворов
+        //showmessage(inttostr(tn_h)+' '+inttostr(t_h_o));
+
+
+        if (t_h_o < t_h_c) or ((t_h_o = t_h_c) and (t_m_o <= t_m_c)) then
+        begin
+          { ≈сли временной интервал не пересекаетс€ с полуночью }
+          if ((tn_h > t_h_o) or ((tn_h = t_h_o) and (tn_m >= t_m_o))) and
+             ((tn_h < t_h_c) or ((tn_h = t_h_c) and (tn_m < t_m_c))) then
+          begin
+                    form7.sql_task_h.active := False;
+                    form7.sql_task_h.SQL.Clear;
+                    form7.sql_task_h.SQL.Add
+                     ('UPDATE `status_zatvor` SET `status` ="1", `open_level`="100" where `id` ="'+inttostr(i)+'" ');
+                    Form7.sql_task_h.ExecSQL();
+          end
+          else
+          begin
+                    form7.sql_task_h.active := False;
+                    form7.sql_task_h.SQL.Clear;
+                    form7.sql_task_h.SQL.Add
+                     ('UPDATE `status_zatvor` SET `status` ="0", `open_level`="0" where `id` ="'+inttostr(i)+'" ');
+                    Form7.sql_task_h.ExecSQL();
+          end;
+        end
+        else
+        begin
+          { ≈сли временной интервал пересекаетс€ с полуночью }
+          if ((tn_h > t_h_o) or ((tn_h = t_h_o) and (tn_m >= t_m_o))) or
+             ((tn_h < t_h_c) or ((tn_h = t_h_c) and (tn_m < t_m_c))) then
+          begin
+                    form7.sql_task_h.active := False;
+                    form7.sql_task_h.SQL.Clear;
+                    form7.sql_task_h.SQL.Add
+                     ('UPDATE `status_zatvor` SET `status` ="1", `open_level`="100" where `id` ="'+inttostr(i)+'" ');
+                    Form7.sql_task_h.ExecSQL();
+          end
+          else
+          begin
+                    form7.sql_task_h.active := False;
+                    form7.sql_task_h.SQL.Clear;
+                    form7.sql_task_h.SQL.Add
+                     ('UPDATE `status_zatvor` SET `status` ="0", `open_level`="0" where `id` ="'+inttostr(i)+'" ');
+                    Form7.sql_task_h.ExecSQL();
+          end;
+        end;
+
+
+    end;
+
+
+
+     form7.sql_task_h.active := False;
+     form7.sql_task_h.SQL.Clear;
+
+   end;
+
 end;
 
 procedure TForm7.timer_bd_scTimer(Sender: TObject);

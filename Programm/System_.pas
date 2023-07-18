@@ -535,6 +535,12 @@ er12 := False;
   Form1.StringGrid1.Cells[4, 0] := 'Температура почвы';
   con_sql();
 
+  if bd_c=true and form1.RadioButton2.Checked  then
+     if form7.RadioButton2.Checked then
+       form7.task_h.Enabled:=true
+     else
+       form7.task_t.Enabled:=true;
+
 end;
 
 procedure TForm1.Image7Click(Sender: TObject);
@@ -1017,7 +1023,7 @@ var
 begin
   Res := Date;
   Res2 := Time;
-  Label6.Caption := TimeToStr(Res2);
+  Label6.Caption := FormatDateTime('hh:nn:ss',Res2);
   Label4.Caption := DateToStr(Res);
 
 end;

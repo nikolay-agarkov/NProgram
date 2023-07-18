@@ -1,6 +1,7 @@
 object Form7: TForm7
   Left = 0
   Top = 0
+  BorderStyle = bsSingle
   ClientHeight = 539
   ClientWidth = 752
   Color = clBtnFace
@@ -427,7 +428,8 @@ object Form7: TForm7
   end
   object task_t: TTimer
     Enabled = False
-    Interval = 1500
+    Interval = 5000
+    OnTimer = task_tTimer
     Left = 32
     Top = 136
   end

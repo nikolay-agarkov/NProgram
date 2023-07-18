@@ -4,7 +4,7 @@ object Form1: TForm1
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1048#1085#1092#1086#1088#1084#1072#1094#1080#1103' '#1086' '#1089#1080#1089#1090#1077#1084#1077
-  ClientHeight = 514
+  ClientHeight = 511
   ClientWidth = 1313
   Color = clSilver
   Font.Charset = DEFAULT_CHARSET
@@ -2572,7 +2572,7 @@ object Form1: TForm1
             object sr_hum_sensor: TLabel
               Left = 376
               Top = 42
-              Width = 65
+              Width = 4
               Height = 21
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -2728,10 +2728,6 @@ object Form1: TForm1
             Height = 431
             Align = alClient
             TabOrder = 0
-            ExplicitLeft = 4
-            ExplicitTop = 26
-            ExplicitWidth = 393
-            ExplicitHeight = 407
             object Label18: TLabel
               Left = 134
               Top = 15
@@ -2762,8 +2758,6 @@ object Form1: TForm1
               Font.Style = []
               ParentFont = False
               TabOrder = 0
-              ExplicitTop = 70
-              ExplicitWidth = 385
               ColWidths = (
                 167
                 111
@@ -2776,26 +2770,28 @@ object Form1: TForm1
   end
   object Panel16: TPanel
     Left = 0
-    Top = 471
+    Top = 468
     Width = 1313
     Height = 43
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 470
+    ExplicitTop = 467
     ExplicitWidth = 1309
     object Label22: TLabel
-      Left = 753
-      Top = 14
+      Left = 1051
+      Top = 24
       Width = 40
       Height = 15
       Caption = 'Label22'
+      Visible = False
     end
     object Label23: TLabel
-      Left = 683
-      Top = 14
+      Left = 1051
+      Top = 3
       Width = 40
       Height = 15
       Caption = 'Label22'
+      Visible = False
     end
     object Panel17: TPanel
       Left = 1
@@ -2936,10 +2932,9 @@ object Form1: TForm1
     end
   end
   object Timer_date: TTimer
-    Interval = 3000
     OnTimer = Timer_dateTimer
-    Left = 32
-    Top = 480
+    Left = 88
+    Top = 352
   end
   object MainMenu1: TMainMenu
     Left = 72
@@ -2993,7 +2988,7 @@ object Form1: TForm1
   object Timer_bd: TTimer
     Enabled = False
     OnTimer = Timer_bdTimer
-    Left = 904
+    Left = 912
     Top = 304
   end
   object T_bd_value_now: TTimer
@@ -3026,8 +3021,8 @@ object Form1: TForm1
   object scan_error: TTimer
     Enabled = False
     OnTimer = scan_errorTimer
-    Left = 872
-    Top = 242
+    Left = 840
+    Top = 250
   end
   object query_scan_err: TSQLQuery
     MaxBlobSize = -1
@@ -3039,8 +3034,8 @@ object Form1: TForm1
   object blink_error: TTimer
     Interval = 500
     OnTimer = blink_errorTimer
-    Left = 968
-    Top = 312
+    Left = 912
+    Top = 384
   end
   object program_check: TSQLQuery
     MaxBlobSize = -1
