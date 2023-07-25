@@ -29,12 +29,12 @@ extern uint8_t MediumFontRus[];
 #define RECIV digitalWrite(TRANSMIT, LOW)
 
 #include "KRModbusRTUSlave.h"
+//#include "KRModbusASCIISlave.h"
 #include "Data.h"
-
-
 
 Data data_mb;
 KRModbusRTUSlave mb(Serial,data_mb,ADDR_SLAVE);
+//KRModbusASCIISlave mb(Serial,data_mb,ADDR_SLAVE);
 
 
 //<<<!!! ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ !!!>>>
@@ -42,18 +42,22 @@ int min_value = 0;
 int max_value = 1023;
 unsigned long my_timer;
 unsigned long my_timer2;
-unsigned long period_time = (long)10 * 1000;
+unsigned long period_time = (long)60 * 1000;
 unsigned long time_limit = (long)40 * 1000;
 int value = -1;
 int value_kalib = -1;
 byte value_proces = -1;
 byte disp = 0;
 bool dis = true;
+float temperature;
 
 word wd_value;
 word wd_value_kalib;
 word wd_value_proces;
 word wd_temperature;
+word wd_cmd;
+
+ byte data[2]; // Место для значения те 
 
 uint16_t AnalogMeasure() {
   uint16_t a0 = 0;
@@ -108,7 +112,7 @@ void def_config() {
 
 void setup() {
 
-
+  mb.setReadTimeout(100);
 
   // чтение стандартных значений
   EEPROM.get(0, min_value);
@@ -155,6 +159,13 @@ void setup() {
 
   pinMode(TRANSMIT, OUTPUT);  
   RECIV;
+/*
+  wd_value = 50;
+  wd_value_kalib = 51;
+  wd_value_proces = 52;
+  wd_temperature = 53;
+  wd_cmd = 54;
+*/
 
 }
 
@@ -166,29 +177,8 @@ void display_() {
 }
 
 void loop() {
- byte data[2]; // Место для значения те 
- 
- 
- 
-  
-  ds.reset(); // Начинаем взаимодействие со сброса всех предыдущих команд и параметров
-  ds.write(0xCC); // Даем датчику DS18b20 команду пропустить поиск по адресу. В нашем случае только одно устрйоство 
-  ds.write(0x44); // Даем датчику DS18b20 команду измерить температуру. Само значение температуры мы еще не получаем - датчик его положит во внутреннюю память
-  delay(100); // Микросхема измеряет температуру, а мы ждем.  
-  
-  ds.reset(); // Теперь готовимся получить значение измеренной температуры
-  ds.write(0xCC); 
-  ds.write(0xBE); // Просим передать нам значение регистров со значением температуры
-  // Получаем и считываем ответ
-  data[0] = ds.read(); // Читаем младший байт значения температуры
-  data[1] = ds.read(); // А теперь старший
-  // Формируем итоговое значение: 
-  //    - сперва "склеиваем" значение, 
-  //    - затем умножаем его на коэффициент, соответсвующий разрешающей способности (для 12 бит по умолчанию - это 0,0625)
-  float temperature =  ((data[1] << 8) | data[0]) * 0.0625;
 
-  wd_temperature = (word)(temperature * 10);
-
+  
   if (digitalRead(13) == HIGH) {
     def_config();
   }
@@ -269,6 +259,8 @@ void loop() {
 
   if (millis() - my_timer >= period_time) {
     my_timer = millis();   // "сбросить" таймер
+
+
     value = AnalogMeasure();
     value_kalib = map(value, 0, 1023, min_value, max_value);
     value_proces = map(value_kalib, min_value, max_value, 0, 100);
@@ -277,9 +269,27 @@ void loop() {
     wd_value_kalib = (word)value_kalib;
     wd_value_proces = (word)value_proces;
     
-    Serial.println ();
+    //Serial.println ();
 
+  ds.reset(); // Начинаем взаимодействие со сброса всех предыдущих команд и параметров
+  ds.write(0xCC); // Даем датчику DS18b20 команду пропустить поиск по адресу. В нашем случае только одно устрйоство 
+  ds.write(0x44); // Даем датчику DS18b20 команду измерить температуру. Само значение температуры мы еще не получаем - датчик его положит во внутреннюю память
+  delay(100); // Микросхема измеряет температуру, а мы ждем.  
+  
+  ds.reset(); // Теперь готовимся получить значение измеренной температуры
+  ds.write(0xCC); 
+  ds.write(0xBE); // Просим передать нам значение регистров со значением температуры
+  // Получаем и считываем ответ
+  data[0] = ds.read(); // Читаем младший байт значения температуры
+  data[1] = ds.read(); // А теперь старший
+  // Формируем итоговое значение: 
+  //    - сперва "склеиваем" значение, 
+  //    - затем умножаем его на коэффициент, соответсвующий разрешающей способности (для 12 бит по умолчанию - это 0,0625)
+  temperature = 0; // ((data[1] << 8) | data[0]) * 0.0625;
 
+  wd_temperature = (word)(temperature * 10);
+    
+    
     // Отображение данных с датчика
     if (dis == true) {
       if (disp == 0) {
@@ -333,8 +343,9 @@ void loop() {
         myOLED.print (max_value);
       }
     }
-  }
 
+
+  }
 
     mb._DO();
     data_mb._DO();
