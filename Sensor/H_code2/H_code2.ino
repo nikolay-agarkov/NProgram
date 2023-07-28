@@ -23,7 +23,7 @@ extern uint8_t MediumFontRus[];
 
 //Подключение библиотеки KRModbusRTUSlave
 #define TRANSMIT 2
-#define ADDR_SLAVE 20
+#define ADDR_SLAVE 22
 
 #define TRANS digitalWrite(TRANSMIT, HIGH)
 #define RECIV digitalWrite(TRANSMIT, LOW)
