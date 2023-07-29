@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Хост:                         127.0.0.1
--- Версия сервера:               10.4.26-MariaDB-log - mariadb.org binary distribution
+-- Версия сервера:               11.0.2-MariaDB - mariadb.org binary distribution
 -- Операционная система:         Win64
--- HeidiSQL Версия:              12.1.0.6537
+-- HeidiSQL Версия:              12.3.0.6589
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,7 +27,8 @@ CREATE TABLE IF NOT EXISTS `error` (
   `Value_programm` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Дамп данных таблицы test_water.error: ~11 rows (приблизительно)
+-- Дамп данных таблицы test_water.error: ~12 rows (приблизительно)
+DELETE FROM `error`;
 INSERT INTO `error` (`Item`, `code_error`, `Text_error`, `Value_programm`) VALUES
 	('Gate1', '0', 'Ошибка затвора 1', NULL),
 	('Gate2', '0', 'Ошибка затвора 2', NULL),
@@ -39,7 +40,7 @@ INSERT INTO `error` (`Item`, `code_error`, `Text_error`, `Value_programm`) VALUE
 	('Senor_water_level_3', '0', 'Ошибка датчика уровня воды на затворе 3', NULL),
 	('Senor_water_level_1', '0', 'Ошибка датчика уровня воды на затворе 1', NULL),
 	('Sensor_humidity_1', '0', 'Ошибка датчика влажности 2', NULL),
-	('Sensor_humidity_2', '0', 'Ошибка датчика влажности 1', NULL),
+	('Sensor_humidity_2', '1', 'Ошибка датчика влажности 1', NULL),
 	('Programm', '1', 'Ошибка запуска программы', 7);
 
 -- Дамп структуры для таблица test_water.records
@@ -53,9 +54,10 @@ CREATE TABLE IF NOT EXISTS `records` (
   `reset` varchar(10) CHARACTER SET cp1251 COLLATE cp1251_bin NOT NULL,
   `lastcode` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=794 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=794 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- Дамп данных таблицы test_water.records: ~793 rows (приблизительно)
+DELETE FROM `records`;
 INSERT INTO `records` (`id`, `sensor_id`, `level`, `bat`, `rashod`, `date_insert`, `reset`, `lastcode`) VALUES
 	(1, 1, 100, 100, 30, '2022-09-15 18:31:25', '', 0),
 	(2, 1, 99, 100, 40, '2022-09-15 18:55:20', '', 0),
@@ -854,15 +856,16 @@ INSERT INTO `records` (`id`, `sensor_id`, `level`, `bat`, `rashod`, `date_insert
 -- Дамп структуры для таблица test_water.sensors_hum
 CREATE TABLE IF NOT EXISTS `sensors_hum` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_sensors` varchar(40) COLLATE cp1251_bin NOT NULL,
-  `id_pole` varchar(20) COLLATE cp1251_bin NOT NULL,
-  `name` varchar(40) COLLATE cp1251_bin NOT NULL,
-  `desck` varchar(40) COLLATE cp1251_bin NOT NULL,
-  `Active` varchar(50) COLLATE cp1251_bin DEFAULT NULL,
+  `id_sensors` varchar(40) NOT NULL,
+  `id_pole` varchar(20) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `desck` varchar(40) NOT NULL,
+  `Active` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin;
 
 -- Дамп данных таблицы test_water.sensors_hum: ~4 rows (приблизительно)
+DELETE FROM `sensors_hum`;
 INSERT INTO `sensors_hum` (`id`, `id_sensors`, `id_pole`, `name`, `desck`, `Active`) VALUES
 	(1, 'p-01', '1', '[Датчик 1]', '[Расположен на поле 1]', '1'),
 	(2, 'p-02', '1', '[Датчик 2]', '[Расположен на поле 1]', '0'),
@@ -872,14 +875,15 @@ INSERT INTO `sensors_hum` (`id`, `id_sensors`, `id_pole`, `name`, `desck`, `Acti
 -- Дамп структуры для таблица test_water.sensor_level
 CREATE TABLE IF NOT EXISTS `sensor_level` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(40) COLLATE cp1251_bin NOT NULL,
-  `level_water` varchar(10) COLLATE cp1251_bin NOT NULL,
-  `rashod_k` varchar(10) COLLATE cp1251_bin NOT NULL,
-  `rashod_s` varchar(10) COLLATE cp1251_bin NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `level_water` varchar(10) NOT NULL,
+  `rashod_k` varchar(10) NOT NULL,
+  `rashod_s` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin;
 
 -- Дамп данных таблицы test_water.sensor_level: ~3 rows (приблизительно)
+DELETE FROM `sensor_level`;
 INSERT INTO `sensor_level` (`id`, `name`, `level_water`, `rashod_k`, `rashod_s`) VALUES
 	(1, 'Затвор 1', '4.0', '78      ', '10'),
 	(2, 'Затвор 2', '2.3', '38      ', '4.9'),
@@ -888,14 +892,15 @@ INSERT INTO `sensor_level` (`id`, `name`, `level_water`, `rashod_k`, `rashod_s`)
 -- Дамп структуры для таблица test_water.sensor_values
 CREATE TABLE IF NOT EXISTS `sensor_values` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_sensors` varchar(40) COLLATE cp1251_bin NOT NULL,
-  `hum_val` varchar(11) COLLATE cp1251_bin NOT NULL,
-  `hum_val_proc` varchar(11) COLLATE cp1251_bin NOT NULL,
-  `temp_val` varchar(11) COLLATE cp1251_bin NOT NULL,
+  `id_sensors` varchar(40) NOT NULL,
+  `hum_val` varchar(11) NOT NULL,
+  `hum_val_proc` varchar(11) NOT NULL,
+  `temp_val` varchar(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin;
 
 -- Дамп данных таблицы test_water.sensor_values: ~4 rows (приблизительно)
+DELETE FROM `sensor_values`;
 INSERT INTO `sensor_values` (`id`, `id_sensors`, `hum_val`, `hum_val_proc`, `temp_val`) VALUES
 	(1, 'p-01', '800', '76', '21'),
 	(2, 'p-02', '784', '74', '20'),
@@ -907,30 +912,33 @@ CREATE TABLE IF NOT EXISTS `status_zatvor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `level_metr` varchar(3) COLLATE cp1251_bin NOT NULL,
+  `level_metr` varchar(3) NOT NULL,
   `procent_otk` int(11) NOT NULL,
   `open_level` int(11) DEFAULT NULL,
   `id_pole` int(11) DEFAULT NULL,
   `average_value_h` float DEFAULT NULL,
+  `cmd` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin;
 
 -- Дамп данных таблицы test_water.status_zatvor: ~3 rows (приблизительно)
-INSERT INTO `status_zatvor` (`id`, `name`, `status`, `level_metr`, `procent_otk`, `open_level`, `id_pole`, `average_value_h`) VALUES
-	(1, 'Затвор 1', 0, '2', 0, 0, 0, NULL),
-	(2, 'Затвор 2', 0, '1.4', 0, 0, 1, 76),
-	(3, 'Затвор 3', 0, '10', 0, 0, 2, 76);
+DELETE FROM `status_zatvor`;
+INSERT INTO `status_zatvor` (`id`, `name`, `status`, `level_metr`, `procent_otk`, `open_level`, `id_pole`, `average_value_h`, `cmd`) VALUES
+	(1, 'Затвор 1', 1, '2', 100, 0, 0, NULL, 1),
+	(2, 'Затвор 2', 2, '1.4', 0, 0, 1, 76, 2),
+	(3, 'Затвор 3', 1, '10', 0, 0, 2, 76, 2);
 
 -- Дамп структуры для таблица test_water.task_humidity
 CREATE TABLE IF NOT EXISTS `task_humidity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ID_Zatvor` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `min` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `max` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ID_Zatvor` varchar(20) NOT NULL,
+  `min` varchar(20) NOT NULL,
+  `max` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Дамп данных таблицы test_water.task_humidity: ~2 rows (приблизительно)
+DELETE FROM `task_humidity`;
 INSERT INTO `task_humidity` (`id`, `ID_Zatvor`, `min`, `max`) VALUES
 	(3, '3', '25', '60'),
 	(4, '2', '27', '70');
@@ -938,13 +946,14 @@ INSERT INTO `task_humidity` (`id`, `ID_Zatvor`, `min`, `max`) VALUES
 -- Дамп структуры для таблица test_water.task_schedule
 CREATE TABLE IF NOT EXISTS `task_schedule` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ID_Zatvor` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Time_Open` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Time_Close` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ID_Zatvor` varchar(11) NOT NULL,
+  `Time_Open` varchar(20) NOT NULL,
+  `Time_Close` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Дамп данных таблицы test_water.task_schedule: ~2 rows (приблизительно)
+DELETE FROM `task_schedule`;
 INSERT INTO `task_schedule` (`id`, `ID_Zatvor`, `Time_Open`, `Time_Close`) VALUES
 	(13, '2', '18:08:00', '00:08:00'),
 	(14, '1', '23:31:00', '00:09:00');
