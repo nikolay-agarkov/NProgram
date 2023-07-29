@@ -580,6 +580,7 @@ object Form1: TForm1
             Top = 5
             Width = 25
             Height = 25
+            ParentShowHint = False
             Picture.Data = {
               055449636F6E0000010001001A1A000001002000200B00001600000028000000
               1A000000340000000100200000000000900A0000130B0000130B000000000000
@@ -672,6 +673,7 @@ object Form1: TForm1
               001E0000001E0000001E0000001E000000000000000000000000000000000000
               00000000000000000000000000000000000000000000000000000000}
             Proportional = True
+            ShowHint = True
           end
         end
       end
@@ -2010,7 +2012,9 @@ object Form1: TForm1
           Width = 145
           Height = 17
           Caption = #1056#1091#1095#1085#1086#1077' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1077
+          Checked = True
           TabOrder = 1
+          TabStop = True
           OnClick = RadioButton1Click
         end
         object RadioButton2: TRadioButton
@@ -2019,9 +2023,7 @@ object Form1: TForm1
           Width = 201
           Height = 17
           Caption = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1086#1077' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1077
-          Checked = True
           TabOrder = 2
-          TabStop = True
           OnClick = RadioButton2Click
         end
       end
@@ -2078,8 +2080,8 @@ object Form1: TForm1
               ParentFont = False
             end
             object Label9: TLabel
-              Left = 129
-              Top = 180
+              Left = 137
+              Top = 220
               Width = 7
               Height = 15
               Caption = '1'
@@ -2092,7 +2094,7 @@ object Form1: TForm1
             end
             object Label24: TLabel
               Left = 16
-              Top = 95
+              Top = 141
               Width = 118
               Height = 15
               Caption = #1058#1088#1077#1073#1091#1077#1084#1099#1081' '#1091#1088#1086#1074#1077#1085#1100
@@ -2105,7 +2107,7 @@ object Form1: TForm1
             end
             object Label25: TLabel
               Left = 16
-              Top = 159
+              Top = 191
               Width = 107
               Height = 15
               Caption = #1058#1077#1082#1091#1097#1080#1081' '#1091#1088#1086#1074#1077#1085#1100':'
@@ -2133,7 +2135,7 @@ object Form1: TForm1
             end
             object gate1_t_level: TEdit
               Left = 19
-              Top = 180
+              Top = 212
               Width = 54
               Height = 23
               Enabled = False
@@ -2148,7 +2150,7 @@ object Form1: TForm1
             end
             object gate1_n_level: TEdit
               Left = 25
-              Top = 116
+              Top = 162
               Width = 104
               Height = 23
               Font.Charset = DEFAULT_CHARSET
@@ -2168,6 +2170,20 @@ object Form1: TForm1
               Height = 192
               Orientation = pbVertical
               TabOrder = 3
+            end
+            object Button7: TButton
+              Left = 19
+              Top = 79
+              Width = 142
+              Height = 25
+              Caption = #1057#1090#1086#1087
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+              TabOrder = 4
             end
           end
         end
@@ -2217,7 +2233,7 @@ object Form1: TForm1
             end
             object Label12: TLabel
               Left = 128
-              Top = 172
+              Top = 204
               Width = 7
               Height = 17
               Caption = '1'
@@ -2230,7 +2246,7 @@ object Form1: TForm1
             end
             object Label26: TLabel
               Left = 16
-              Top = 87
+              Top = 127
               Width = 118
               Height = 15
               Caption = #1058#1088#1077#1073#1091#1077#1084#1099#1081' '#1091#1088#1086#1074#1077#1085#1100
@@ -2242,8 +2258,8 @@ object Form1: TForm1
               ParentFont = False
             end
             object Label27: TLabel
-              Left = 16
-              Top = 151
+              Left = 24
+              Top = 183
               Width = 107
               Height = 15
               Caption = #1058#1077#1082#1091#1097#1080#1081' '#1091#1088#1086#1074#1077#1085#1100':'
@@ -2285,7 +2301,7 @@ object Form1: TForm1
             end
             object gate2_t_level: TEdit
               Left = 19
-              Top = 172
+              Top = 204
               Width = 54
               Height = 23
               Enabled = False
@@ -2299,8 +2315,8 @@ object Form1: TForm1
               TabOrder = 2
             end
             object gate2_n_level: TEdit
-              Left = 25
-              Top = 108
+              Left = 17
+              Top = 148
               Width = 104
               Height = 23
               Font.Charset = DEFAULT_CHARSET
@@ -2314,13 +2330,27 @@ object Form1: TForm1
               Text = '0'
             end
           end
+          object Button6: TButton
+            Left = 24
+            Top = 74
+            Width = 140
+            Height = 25
+            Caption = #1057#1090#1086#1087
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = 16
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold, fsItalic, fsUnderline]
+            ParentFont = False
+            TabOrder = 1
+          end
         end
         object TabSheet3: TTabSheet
           Caption = #1047#1072#1090#1074#1086#1088' 3'
           ImageIndex = 2
           object GroupBox3: TGroupBox
             Left = 3
-            Top = 0
+            Top = 4
             Width = 285
             Height = 256
             Color = clMoneyGreen
@@ -2361,7 +2391,7 @@ object Form1: TForm1
             end
             object Label15: TLabel
               Left = 136
-              Top = 180
+              Top = 204
               Width = 7
               Height = 17
               Caption = '1'
@@ -2374,7 +2404,7 @@ object Form1: TForm1
             end
             object Label28: TLabel
               Left = 24
-              Top = 95
+              Top = 133
               Width = 118
               Height = 15
               Caption = #1058#1088#1077#1073#1091#1077#1084#1099#1081' '#1091#1088#1086#1074#1077#1085#1100
@@ -2387,7 +2417,7 @@ object Form1: TForm1
             end
             object Label29: TLabel
               Left = 24
-              Top = 159
+              Top = 183
               Width = 107
               Height = 15
               Caption = #1058#1077#1082#1091#1097#1080#1081' '#1091#1088#1086#1074#1077#1085#1100':'
@@ -2429,7 +2459,7 @@ object Form1: TForm1
             end
             object gate3_t_level: TEdit
               Left = 27
-              Top = 180
+              Top = 204
               Width = 54
               Height = 23
               Enabled = False
@@ -2443,8 +2473,8 @@ object Form1: TForm1
               TabOrder = 2
             end
             object gate3_n_level: TEdit
-              Left = 33
-              Top = 116
+              Left = 25
+              Top = 154
               Width = 104
               Height = 23
               Font.Charset = DEFAULT_CHARSET
@@ -2456,6 +2486,20 @@ object Form1: TForm1
               ParentFont = False
               TabOrder = 3
               Text = '0'
+            end
+            object Button5: TButton
+              Left = 16
+              Top = 78
+              Width = 153
+              Height = 25
+              Caption = #1057#1090#1086#1087
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+              TabOrder = 4
             end
           end
         end
@@ -2933,8 +2977,8 @@ object Form1: TForm1
   end
   object Timer_date: TTimer
     OnTimer = Timer_dateTimer
-    Left = 88
-    Top = 352
+    Left = 16
+    Top = 32
   end
   object MainMenu1: TMainMenu
     Left = 72

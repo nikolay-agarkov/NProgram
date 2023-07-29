@@ -143,6 +143,9 @@ type
     Label30: TLabel;
     sr_hum_sensor: TLabel;
     Label31: TLabel;
+    Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
     procedure Timer_dateTimer(Sender: TObject);
     procedure N4Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -666,15 +669,18 @@ begin
           begin
             Form1.gate_1.Color := clRed;
             er1 := True;
-            MessageBox(Form1.Handle,
-              PChar(Form1.query_scan_err.fields[2].AsString), '',
-              MB_ICONINFORMATION);
+
+            form1.gate_1.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.gate_1.ShowHint:=true;
+//            MessageBox(Form1.Handle, PChar(Form1.query_scan_err.fields[2].AsString), '',         MB_ICONINFORMATION);
           end;
         end
         else
         begin
           er1 := False;
           Form1.gate_1.Color := clSkyBlue;
+          form1.gate_1.Hint:='OK';
+          form1.gate_1.ShowHint:=true;
         end;
 
       if (Form1.query_scan_err.fields[0].AsString = 'Gate2') then
@@ -684,15 +690,16 @@ begin
           begin
             Form1.Gate_2.Color := clRed;
             er2 := True;
-            MessageBox(Form1.Handle,
-              PChar(Form1.query_scan_err.fields[2].AsString), '',
-              MB_ICONINFORMATION);
+                        form1.gate_2.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.gate_2.ShowHint:=true;
           end;
         end
         else
         begin
           er2 := False;
           Form1.Gate_2.Color := clSkyBlue;
+            form1.gate_2.Hint:='OK';
+            form1.gate_2.ShowHint:=true;
         end;
 
       if (Form1.query_scan_err.fields[0].AsString = 'Gate3') then
@@ -702,15 +709,16 @@ begin
           begin
             Form1.Gate_3.Color := clRed;
             er3 := True;
-            MessageBox(Form1.Handle,
-              PChar(Form1.query_scan_err.fields[2].AsString), '',
-              MB_ICONINFORMATION);
+                         form1.gate_3.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.gate_3.ShowHint:=true;
           end;
         end
         else
         begin
           er3 := False;
           Form1.Gate_3.Color := clSkyBlue;
+          form1.gate_3.Hint:='OK';
+          form1.gate_3.ShowHint:=true;
         end;
 
       // датчики уровня воды
@@ -721,15 +729,16 @@ begin
           begin
             Form1.gate1_water_sensor.Color := clRed;
             er4 := True;
-            MessageBox(Form1.Handle,
-              PChar(Form1.query_scan_err.fields[2].AsString), '',
-              MB_ICONINFORMATION);
+                        form1.gate1_water_sensor.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.gate1_water_sensor.ShowHint:=true;
           end;
         end
         else
         begin
           er4 := False;
           Form1.gate1_water_sensor.Color := clSkyBlue;
+          form1.gate1_water_sensor.Hint:='OK';
+            form1.gate1_water_sensor.ShowHint:=true;
         end;
 
       if (Form1.query_scan_err.fields[0].AsString = 'Senor_water_level_2') then
@@ -739,15 +748,16 @@ begin
           begin
             Form1.gate2_water_sensor.Color := clRed;
             er5 := True;
-            MessageBox(Form1.Handle,
-              PChar(Form1.query_scan_err.fields[2].AsString), '',
-              MB_ICONINFORMATION);
+             form1.gate2_water_sensor.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.gate2_water_sensor.ShowHint:=true;
           end;
         end
         else
         begin
           er5 := False;
           Form1.gate2_water_sensor.Color := clSkyBlue;
+          form1.gate2_water_sensor.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.gate2_water_sensor.ShowHint:=true;
         end;
 
       if (Form1.query_scan_err.fields[0].AsString = 'Senor_water_level_3') then
@@ -757,15 +767,16 @@ begin
           begin
             Form1.gate3_water_sensor.Color := clRed;
             er6 := True;
-            MessageBox(Form1.Handle,
-              PChar(Form1.query_scan_err.fields[2].AsString), '',
-              MB_ICONINFORMATION);
+            form1.gate3_water_sensor.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.gate3_water_sensor.ShowHint:=true;
           end;
         end
         else
         begin
           er6 := False;
           Form1.gate3_water_sensor.Color := clSkyBlue;
+          form1.gate3_water_sensor.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.gate3_water_sensor.ShowHint:=true;
         end;
 
       // тросиковые датчики
@@ -776,15 +787,16 @@ begin
           begin
             Form1.Gate1_level.Color := clRed;
             er7 := True;
-            MessageBox(Form1.Handle,
-              PChar(Form1.query_scan_err.fields[2].AsString), '',
-              MB_ICONINFORMATION);
+            form1.Gate1_level.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.Gate1_level.ShowHint:=true;
           end;
         end
         else
         begin
           er7 := False;
           Form1.Gate1_level.Color := clSkyBlue;
+           form1.Gate1_level.Hint:='OK';
+            form1.Gate1_level.ShowHint:=true;
         end;
 
       if (Form1.query_scan_err.fields[0].AsString = 'Sensor_gate_level_2') then
@@ -794,15 +806,16 @@ begin
           begin
             Form1.Gate2_level.Color := clRed;
             er8 := True;
-            MessageBox(Form1.Handle,
-              PChar(Form1.query_scan_err.fields[2].AsString), '',
-              MB_ICONINFORMATION);
+             form1.Gate2_level.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.Gate2_level.ShowHint:=true;
           end;
         end
         else
         begin
           er8 := False;
           Form1.Gate2_level.Color := clSkyBlue;
+           form1.Gate2_level.Hint:='OK';
+            form1.Gate2_level.ShowHint:=true;
         end;
       if (Form1.query_scan_err.fields[0].AsString = 'Sensor_gate_level_3') then
         if (Form1.query_scan_err.fields[1].AsString = '1') then
@@ -811,15 +824,16 @@ begin
           begin
             Form1.Gate3_level.Color := clRed;
             er9 := True;
-            MessageBox(Form1.Handle,
-              PChar(Form1.query_scan_err.fields[2].AsString), '',
-              MB_ICONINFORMATION);
+             form1.Gate3_level.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.Gate3_level.ShowHint:=true;
           end;
         end
         else
         begin
           er9 := False;
           Form1.Gate3_level.Color := clSkyBlue;
+           form1.Gate3_level.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.Gate3_level.ShowHint:=true;
         end;
 
       // датчики влажности
@@ -830,15 +844,16 @@ begin
           begin
             Form1.Sensor_humidity_1.Color := clRed;
             er10 := True;
-            MessageBox(Form1.Handle,
-              PChar(Form1.query_scan_err.fields[2].AsString), '',
-              MB_ICONINFORMATION);
+             form1.Sensor_humidity_1.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.Sensor_humidity_1.ShowHint:=true;
           end;
         end
         else
         begin
           er10 := False;
           Form1.Sensor_humidity_1.Color := clGreen;
+          form1.Sensor_humidity_1.Hint:='OK';
+            form1.Sensor_humidity_1.ShowHint:=true;
         end;
 
       if (Form1.query_scan_err.fields[0].AsString = 'Sensor_humidity_2') then
@@ -848,15 +863,16 @@ begin
           begin
             Form1.Sensor_humidity_2.Color := clRed;
             er11 := True;
-            MessageBox(Form1.Handle,
-              PChar(Form1.query_scan_err.fields[2].AsString), '',
-              MB_ICONINFORMATION);
+            form1.Sensor_humidity_2.Hint:=Form1.query_scan_err.fields[2].AsString;
+            form1.Sensor_humidity_2.ShowHint:=true;
           end;
         end
         else
         begin
           er11 := False;
           Form1.Sensor_humidity_2.Color := clGreen;
+          form1.Sensor_humidity_1.Hint:='OK';
+            form1.Sensor_humidity_1.ShowHint:=true;
         end;
 
       // программа
@@ -894,9 +910,7 @@ begin
             Form1.PC_connect.Color := clRed;
             Form1.PC_connect.Caption := 'ПО не запущено';
             er12 := True;
-            MessageBox(Form1.Handle,
-              PChar(Form1.query_scan_err.fields[2].AsString), '',
-              MB_ICONINFORMATION);
+
           end;
         end
         else
