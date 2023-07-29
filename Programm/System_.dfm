@@ -2012,9 +2012,7 @@ object Form1: TForm1
           Width = 145
           Height = 17
           Caption = #1056#1091#1095#1085#1086#1077' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1077
-          Checked = True
           TabOrder = 1
-          TabStop = True
           OnClick = RadioButton1Click
         end
         object RadioButton2: TRadioButton
@@ -2023,7 +2021,9 @@ object Form1: TForm1
           Width = 201
           Height = 17
           Caption = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1086#1077' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1077
+          Checked = True
           TabOrder = 2
+          TabStop = True
           OnClick = RadioButton2Click
         end
       end
@@ -2118,14 +2118,38 @@ object Form1: TForm1
               Font.Style = [fsBold]
               ParentFont = False
             end
+            object Shape1: TShape
+              Left = 111
+              Top = 39
+              Width = 42
+              Height = 26
+              Pen.Color = clLime
+              Shape = stCircle
+            end
+            object Shape2: TShape
+              Left = 111
+              Top = 74
+              Width = 42
+              Height = 26
+              Pen.Color = clLime
+              Shape = stCircle
+            end
+            object Shape3: TShape
+              Left = 111
+              Top = 106
+              Width = 42
+              Height = 26
+              Pen.Color = clLime
+              Shape = stCircle
+            end
             object Button1: TButton
               Left = 16
-              Top = 43
-              Width = 149
-              Height = 30
-              Caption = #1054#1090#1082#1088#1099#1090#1100'/'#1079#1072#1082#1088#1099#1090#1100
+              Top = 39
+              Width = 89
+              Height = 29
+              Caption = #1054#1090#1082#1088#1099#1090#1100
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
+              Font.Color = clSkyBlue
               Font.Height = 16
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold, fsItalic, fsUnderline]
@@ -2173,17 +2197,33 @@ object Form1: TForm1
             end
             object Button7: TButton
               Left = 19
-              Top = 79
-              Width = 142
+              Top = 74
+              Width = 86
               Height = 25
               Caption = #1057#1090#1086#1087
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
+              Font.Color = clBlack
               Font.Height = 16
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold, fsItalic, fsUnderline]
               ParentFont = False
               TabOrder = 4
+              OnClick = Button7Click
+            end
+            object Button10: TButton
+              Left = 19
+              Top = 105
+              Width = 86
+              Height = 25
+              Caption = #1047#1072#1082#1088#1099#1090#1100
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+              TabOrder = 5
+              OnClick = Button10Click
             end
           end
         end
@@ -2233,7 +2273,7 @@ object Form1: TForm1
             end
             object Label12: TLabel
               Left = 128
-              Top = 204
+              Top = 220
               Width = 7
               Height = 17
               Caption = '1'
@@ -2245,8 +2285,8 @@ object Form1: TForm1
               ParentFont = False
             end
             object Label26: TLabel
-              Left = 16
-              Top = 127
+              Left = 24
+              Top = 143
               Width = 118
               Height = 15
               Caption = #1058#1088#1077#1073#1091#1077#1084#1099#1081' '#1091#1088#1086#1074#1077#1085#1100
@@ -2259,7 +2299,7 @@ object Form1: TForm1
             end
             object Label27: TLabel
               Left = 24
-              Top = 183
+              Top = 199
               Width = 107
               Height = 15
               Caption = #1058#1077#1082#1091#1097#1080#1081' '#1091#1088#1086#1074#1077#1085#1100':'
@@ -2269,6 +2309,30 @@ object Form1: TForm1
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
+            end
+            object Shape7: TShape
+              Left = 100
+              Top = 39
+              Width = 42
+              Height = 26
+              Pen.Color = clLime
+              Shape = stCircle
+            end
+            object Shape8: TShape
+              Left = 100
+              Top = 69
+              Width = 42
+              Height = 26
+              Pen.Color = clLime
+              Shape = stCircle
+            end
+            object Shape9: TShape
+              Left = 100
+              Top = 101
+              Width = 42
+              Height = 26
+              Pen.Color = clLime
+              Shape = stCircle
             end
             object ProgressBar2: TProgressBar
               Left = 167
@@ -2287,11 +2351,11 @@ object Form1: TForm1
             object Button2: TButton
               Left = 16
               Top = 39
-              Width = 145
+              Width = 81
               Height = 26
-              Caption = #1054#1090#1082#1088#1099#1090#1100'/'#1079#1072#1082#1088#1099#1090#1100
+              Caption = #1054#1090#1082#1088#1099#1090#1100
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
+              Font.Color = clBlack
               Font.Height = 16
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold, fsItalic, fsUnderline]
@@ -2301,7 +2365,7 @@ object Form1: TForm1
             end
             object gate2_t_level: TEdit
               Left = 19
-              Top = 204
+              Top = 220
               Width = 54
               Height = 23
               Enabled = False
@@ -2315,8 +2379,8 @@ object Form1: TForm1
               TabOrder = 2
             end
             object gate2_n_level: TEdit
-              Left = 17
-              Top = 148
+              Left = 25
+              Top = 170
               Width = 104
               Height = 23
               Font.Charset = DEFAULT_CHARSET
@@ -2331,18 +2395,34 @@ object Form1: TForm1
             end
           end
           object Button6: TButton
-            Left = 24
+            Left = 16
             Top = 74
-            Width = 140
+            Width = 81
             Height = 25
             Caption = #1057#1090#1086#1087
             Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
+            Font.Color = clBlack
             Font.Height = 16
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold, fsItalic, fsUnderline]
             ParentFont = False
             TabOrder = 1
+            OnClick = Button6Click
+          end
+          object Button9: TButton
+            Left = 16
+            Top = 105
+            Width = 81
+            Height = 25
+            Caption = #1047#1072#1082#1088#1099#1090#1100
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 16
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold, fsItalic, fsUnderline]
+            ParentFont = False
+            TabOrder = 2
+            OnClick = Button9Click
           end
         end
         object TabSheet3: TTabSheet
@@ -2355,7 +2435,7 @@ object Form1: TForm1
             Height = 256
             Color = clMoneyGreen
             Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
+            Font.Color = clBlack
             Font.Height = -16
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold, fsItalic, fsUnderline]
@@ -2390,9 +2470,9 @@ object Form1: TForm1
               ParentFont = False
             end
             object Label15: TLabel
-              Left = 136
-              Top = 204
-              Width = 7
+              Left = 128
+              Top = 220
+              Width = 15
               Height = 17
               Caption = '1'
               Font.Charset = DEFAULT_CHARSET
@@ -2404,10 +2484,10 @@ object Form1: TForm1
             end
             object Label28: TLabel
               Left = 24
-              Top = 133
-              Width = 118
+              Top = 149
+              Width = 131
               Height = 15
-              Caption = #1058#1088#1077#1073#1091#1077#1084#1099#1081' '#1091#1088#1086#1074#1077#1085#1100
+              Caption = #1058#1088#1077#1073#1091#1077#1084#1099#1081' '#1091#1088#1086#1074#1077#1085#1100' %'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = 16
@@ -2417,16 +2497,40 @@ object Form1: TForm1
             end
             object Label29: TLabel
               Left = 24
-              Top = 183
-              Width = 107
+              Top = 199
+              Width = 120
               Height = 15
-              Caption = #1058#1077#1082#1091#1097#1080#1081' '#1091#1088#1086#1074#1077#1085#1100':'
+              Caption = #1058#1077#1082#1091#1097#1080#1081' '#1091#1088#1086#1074#1077#1085#1100' %:'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = 16
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold]
               ParentFont = False
+            end
+            object Shape4: TShape
+              Left = 116
+              Top = 46
+              Width = 42
+              Height = 26
+              Pen.Color = clLime
+              Shape = stCircle
+            end
+            object Shape5: TShape
+              Left = 116
+              Top = 77
+              Width = 42
+              Height = 26
+              Pen.Color = clLime
+              Shape = stCircle
+            end
+            object Shape6: TShape
+              Left = 116
+              Top = 109
+              Width = 42
+              Height = 26
+              Pen.Color = clLime
+              Shape = stCircle
             end
             object ProgressBar3: TProgressBar
               Left = 175
@@ -2445,11 +2549,11 @@ object Form1: TForm1
             object Button3: TButton
               Left = 16
               Top = 47
-              Width = 153
+              Width = 94
               Height = 25
-              Caption = #1054#1090#1082#1088#1099#1090#1100'/'#1079#1072#1082#1088#1099#1090#1100
+              Caption = #1054#1090#1082#1088#1099#1090#1100
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
+              Font.Color = clBlack
               Font.Height = 16
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold, fsItalic, fsUnderline]
@@ -2459,7 +2563,7 @@ object Form1: TForm1
             end
             object gate3_t_level: TEdit
               Left = 27
-              Top = 204
+              Top = 220
               Width = 54
               Height = 23
               Enabled = False
@@ -2474,7 +2578,7 @@ object Form1: TForm1
             end
             object gate3_n_level: TEdit
               Left = 25
-              Top = 154
+              Top = 170
               Width = 104
               Height = 23
               Font.Charset = DEFAULT_CHARSET
@@ -2490,16 +2594,32 @@ object Form1: TForm1
             object Button5: TButton
               Left = 16
               Top = 78
-              Width = 153
+              Width = 94
               Height = 25
               Caption = #1057#1090#1086#1087
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
+              Font.Color = clBlack
               Font.Height = 16
               Font.Name = 'Segoe UI'
               Font.Style = [fsBold, fsItalic, fsUnderline]
               ParentFont = False
               TabOrder = 4
+              OnClick = Button5Click
+            end
+            object Button8: TButton
+              Left = 16
+              Top = 109
+              Width = 94
+              Height = 25
+              Caption = #1047#1072#1082#1088#1099#1090#1100
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 16
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold, fsItalic, fsUnderline]
+              ParentFont = False
+              TabOrder = 5
+              OnClick = Button8Click
             end
           end
         end
@@ -2575,7 +2695,7 @@ object Form1: TForm1
         Top = 1
         Width = 496
         Height = 461
-        ActivePage = TabSheet4
+        ActivePage = TabSheet5
         Align = alClient
         TabOrder = 0
         object TabSheet4: TTabSheet

@@ -146,6 +146,18 @@ type
     Button5: TButton;
     Button6: TButton;
     Button7: TButton;
+    Button8: TButton;
+    Button9: TButton;
+    Button10: TButton;
+    Shape1: TShape;
+    Shape2: TShape;
+    Shape3: TShape;
+    Shape4: TShape;
+    Shape5: TShape;
+    Shape6: TShape;
+    Shape7: TShape;
+    Shape8: TShape;
+    Shape9: TShape;
     procedure Timer_dateTimer(Sender: TObject);
     procedure N4Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -169,6 +181,12 @@ type
     procedure Button4Click(Sender: TObject);
     procedure scan_errorTimer(Sender: TObject);
     procedure blink_errorTimer(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -365,34 +383,39 @@ begin
 
 end;
 
+procedure TForm1.Button10Click(Sender: TObject);
+begin
+   Form1.Timer_bd.Enabled := False;
+  Form1.SQLQuery1.Active := False;
+  Form1.SQLQuery1.SQL.Clear;
+   if Form1.gate1_n_level.Text>'' then
+   begin
+    Form1.SQLQuery1.SQL.Add
+      ('UPDATE `status_zatvor` SET `cmd` ="2", `open_level`='+form1.gate1_n_level.Text+' where `id` ="1" ');
+        Form1.SQLQuery1.ExecSQL();
+    end  else
+      MessageBox(Form1.Handle,
+              'Значение поля требуемого уровня не может быть пустым', '', MB_ICONINFORMATION);
+   Form1.SQLQuery1.SQL.Clear;
+   Form1.SQLQuery1.Close;
+   Form1.Timer_bd.Enabled := True;
+end;
+
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   Form1.Timer_bd.Enabled := False;
   Form1.SQLQuery1.Active := False;
   Form1.SQLQuery1.SQL.Clear;
 
-  if Form1.Label8.Caption = 'Закрыт' then
-  begin
-   if Form1.gate1_n_level.Text>'' then
+  if Form1.gate1_n_level.Text>'' then
    begin
        Form1.SQLQuery1.SQL.Add
-      ('UPDATE `status_zatvor` SET `status` ="1", `open_level`='+form1.gate1_n_level.Text+' where `id` ="1" ');
+      ('UPDATE `status_zatvor` SET `cmd` ="1", `open_level`='+form1.gate1_n_level.Text+' where `id` ="1" ');
         Form1.SQLQuery1.ExecSQL();
    end else
               MessageBox(Form1.Handle,
               'Значение поля требуемого уровня не может быть пустым', '', MB_ICONINFORMATION);
-  end
-  else
-  begin
-   if Form1.gate1_n_level.Text>'' then
-   begin
-    Form1.SQLQuery1.SQL.Add
-      ('UPDATE `status_zatvor` SET `status` ="0", `open_level`='+form1.gate1_n_level.Text+' where `id` ="1" ');
-        Form1.SQLQuery1.ExecSQL();
-    end  else
-      MessageBox(Form1.Handle,
-              'Значение поля требуемого уровня не может быть пустым', '', MB_ICONINFORMATION);
-  end;
+
 
   Form1.SQLQuery1.SQL.Clear;
   Form1.SQLQuery1.Close;
@@ -406,29 +429,17 @@ begin
   Form1.SQLQuery1.Active := False;
   Form1.SQLQuery1.SQL.Clear;
 
-  if Form1.Label11.Caption = 'Закрыт' then
-  begin
+
   if Form1.gate2_n_level.Text>'' then
    begin
     Form1.SQLQuery1.SQL.Add
-      ('UPDATE `status_zatvor` SET `status` ="1" , `open_level`='+form1.gate2_n_level.Text+' where `id` ="2" ');
+      ('UPDATE `status_zatvor` SET `cmd` ="1" , `open_level`='+form1.gate2_n_level.Text+' where `id` ="2" ');
         Form1.SQLQuery1.ExecSQL();
    end else
            MessageBox(Form1.Handle,
               'Значение поля требуемого уровня не может быть пустым', '', MB_ICONINFORMATION);
 
-  end
-  else
-  begin
-  if Form1.gate2_n_level.Text>'' then
-   begin
-    Form1.SQLQuery1.SQL.Add
-      ('UPDATE `status_zatvor` SET `status` ="0" , `open_level`='+form1.gate2_n_level.Text+' where `id` ="2" ');
-              Form1.SQLQuery1.ExecSQL();
-   end else
-    MessageBox(Form1.Handle,
-              'Значение поля требуемого уровня не может быть пустым', '', MB_ICONINFORMATION);
-  end;
+
   Form1.SQLQuery1.SQL.Clear;
   Form1.SQLQuery1.Close;
   Form1.Timer_bd.Enabled := True;
@@ -440,28 +451,16 @@ begin
   Form1.SQLQuery1.Active := False;
   Form1.SQLQuery1.SQL.Clear;
 
-  if Form1.Label14.Caption = 'Закрыт' then
-  begin
+
   if Form1.gate3_n_level.Text>'' then
    begin
     Form1.SQLQuery1.SQL.Add
-      ('UPDATE `status_zatvor` SET `status` ="1", `open_level`='+form1.gate3_n_level.Text+' where `id` ="3" ');
+      ('UPDATE `status_zatvor` SET `cmd` ="1", `open_level`='+form1.gate3_n_level.Text+' where `id` ="3" ');
         Form1.SQLQuery1.ExecSQL();
    end else
         MessageBox(Form1.Handle,
               'Значение поля требуемого уровня не может быть пустым', '', MB_ICONINFORMATION);
-  end
-  else
-  begin
-  if Form1.gate3_n_level.Text>'' then
-   begin
-    Form1.SQLQuery1.SQL.Add
-      ('UPDATE `status_zatvor` SET `status` ="0" , `open_level`='+form1.gate3_n_level.Text+' where `id` ="3" ');
-        Form1.SQLQuery1.ExecSQL();
-   end else
-        MessageBox(Form1.Handle,
-              'Значение поля требуемого уровня не может быть пустым', '', MB_ICONINFORMATION);
-  end;
+
 
   Form1.SQLQuery1.SQL.Clear;
   Form1.SQLQuery1.Close;
@@ -471,6 +470,90 @@ end;
 procedure TForm1.Button4Click(Sender: TObject);
 begin
   con_sql();
+end;
+
+procedure TForm1.Button5Click(Sender: TObject);
+begin
+ Form1.Timer_bd.Enabled := False;
+  Form1.SQLQuery1.Active := False;
+  Form1.SQLQuery1.SQL.Clear;
+
+
+    Form1.SQLQuery1.SQL.Add
+      ('UPDATE `status_zatvor` SET `cmd` ="0" where `id` ="3" ');
+        Form1.SQLQuery1.ExecSQL();
+
+  Form1.SQLQuery1.SQL.Clear;
+  Form1.SQLQuery1.Close;
+  Form1.Timer_bd.Enabled := True;
+end;
+
+procedure TForm1.Button6Click(Sender: TObject);
+begin
+ Form1.Timer_bd.Enabled := False;
+  Form1.SQLQuery1.Active := False;
+  Form1.SQLQuery1.SQL.Clear;
+
+
+    Form1.SQLQuery1.SQL.Add
+      ('UPDATE `status_zatvor` SET `cmd` ="0" where `id` ="2" ');
+        Form1.SQLQuery1.ExecSQL();
+
+  Form1.SQLQuery1.SQL.Clear;
+  Form1.SQLQuery1.Close;
+  Form1.Timer_bd.Enabled := True;
+end;
+
+procedure TForm1.Button7Click(Sender: TObject);
+begin
+ Form1.Timer_bd.Enabled := False;
+  Form1.SQLQuery1.Active := False;
+  Form1.SQLQuery1.SQL.Clear;
+
+
+    Form1.SQLQuery1.SQL.Add
+      ('UPDATE `status_zatvor` SET `cmd` ="0" where `id` ="1" ');
+        Form1.SQLQuery1.ExecSQL();
+
+  Form1.SQLQuery1.SQL.Clear;
+  Form1.SQLQuery1.Close;
+  Form1.Timer_bd.Enabled := True;
+end;
+
+procedure TForm1.Button8Click(Sender: TObject);
+begin
+   Form1.Timer_bd.Enabled := False;
+  Form1.SQLQuery1.Active := False;
+  Form1.SQLQuery1.SQL.Clear;
+   if Form1.gate3_n_level.Text>'' then
+   begin
+    Form1.SQLQuery1.SQL.Add
+      ('UPDATE `status_zatvor` SET `cmd` ="2", `open_level`='+form1.gate3_n_level.Text+' where `id` ="3" ');
+        Form1.SQLQuery1.ExecSQL();
+    end  else
+      MessageBox(Form1.Handle,
+              'Значение поля требуемого уровня не может быть пустым', '', MB_ICONINFORMATION);
+   Form1.SQLQuery1.SQL.Clear;
+   Form1.SQLQuery1.Close;
+   Form1.Timer_bd.Enabled := True;
+end;
+
+procedure TForm1.Button9Click(Sender: TObject);
+begin
+   Form1.Timer_bd.Enabled := False;
+  Form1.SQLQuery1.Active := False;
+  Form1.SQLQuery1.SQL.Clear;
+   if Form1.gate2_n_level.Text>'' then
+   begin
+    Form1.SQLQuery1.SQL.Add
+      ('UPDATE `status_zatvor` SET `cmd` ="2", `open_level`='+form1.gate2_n_level.Text+' where `id` ="2" ');
+        Form1.SQLQuery1.ExecSQL();
+    end  else
+      MessageBox(Form1.Handle,
+              'Значение поля требуемого уровня не может быть пустым', '', MB_ICONINFORMATION);
+   Form1.SQLQuery1.SQL.Clear;
+   Form1.SQLQuery1.Close;
+   Form1.Timer_bd.Enabled := True;
 end;
 
 procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -756,7 +839,7 @@ begin
         begin
           er5 := False;
           Form1.gate2_water_sensor.Color := clSkyBlue;
-          form1.gate2_water_sensor.Hint:=Form1.query_scan_err.fields[2].AsString;
+          form1.gate2_water_sensor.Hint:='OK';
             form1.gate2_water_sensor.ShowHint:=true;
         end;
 
@@ -775,7 +858,7 @@ begin
         begin
           er6 := False;
           Form1.gate3_water_sensor.Color := clSkyBlue;
-          form1.gate3_water_sensor.Hint:=Form1.query_scan_err.fields[2].AsString;
+          form1.gate3_water_sensor.Hint:='OK';
             form1.gate3_water_sensor.ShowHint:=true;
         end;
 
@@ -963,10 +1046,19 @@ begin
     ('SELECT name,status, procent_otk, level_metr FROM `status_zatvor`');
   Form1.SQLQuery1.Active := True;
   Form1.SQLQuery1.First;
+  if Form1.SQLQuery1.fields[2].AsInteger > 0 then
+    zatvor1(True)
+   else
+     zatvor1(false);
+
+
   if Form1.SQLQuery1.fields[1].AsString = '1' then
   begin
-    zatvor1(True);
-    Form1.Label8.Caption := 'Открыт';
+    Form1.Label8.Caption := 'Открывается...';
+    form1.Shape1.Brush.Color:=clLime;
+    form1.Shape2.Brush.Color:=Clgreen;
+    form1.Shape3.Brush.Color:=clgreen;
+
     Form1.Label8.Font.Color := clLime;
     form1.gate1_t_level.Text:= Form1.SQLQuery1.fields[3].asstring;
     Form1.ProgressBar1.Position := Form1.SQLQuery1.fields[2].AsInteger;
@@ -975,9 +1067,26 @@ begin
   end
   else
   begin
-    zatvor1(False);
-    Form1.Label8.Caption := 'Закрыт';
-    Form1.Label8.Font.Color := clRed;
+
+    if Form1.SQLQuery1.fields[1].AsString = '2' then begin
+      Form1.Label8.Caption := 'Закрывается....';
+           Form1.Label8.Font.Color := clred;
+    form1.Shape3.Brush.Color:=clLime;
+    form1.Shape1.Brush.Color:=Clgreen;
+    form1.Shape2.Brush.Color:=clgreen;
+
+    end
+      else
+    if Form1.SQLQuery1.fields[1].AsString = '0' then
+    begin
+       Form1.Label8.Caption := 'Остановлен';
+      Form1.Label8.Font.Color := clolive;
+    form1.Shape1.Brush.Color:=clgreen;
+    form1.Shape2.Brush.Color:=Clgreen;
+    form1.Shape3.Brush.Color:=clgreen;
+
+      end;
+
     form1.gate1_t_level.Text:= Form1.SQLQuery1.fields[3].asstring;
     Form1.ProgressBar1.Position := Form1.SQLQuery1.fields[2].AsInteger;
     Form1.Label9.Caption := inttostr(Form1.SQLQuery1.fields[2].AsInteger) + '%';
@@ -985,11 +1094,20 @@ begin
   end;
 
   Form1.SQLQuery1.Next;
+      if Form1.SQLQuery1.fields[2].AsInteger > 0 then
+        zatvor2(True)
+     else
+       zatvor2(false);
+
   if Form1.SQLQuery1.fields[1].AsString = '1' then
   begin
-    zatvor2(True);
-    Form1.Label11.Caption := 'Открыт';
+
+
+    Form1.Label11.Caption := 'Открывается...';
     Form1.Label11.Font.Color := clLime;
+    form1.Shape7.Brush.Color:=clLime;
+    form1.Shape8.Brush.Color:=Clgreen;
+    form1.Shape9.Brush.Color:=clgreen;
       form1.gate2_t_level.Text:= Form1.SQLQuery1.fields[3].asstring;
     Form1.ProgressBar2.Position := Form1.SQLQuery1.fields[2].AsInteger;
     Form1.Label12.Caption :=
@@ -997,9 +1115,23 @@ begin
   end
   else
   begin
-    zatvor2(False);
-    Form1.Label11.Caption := 'Закрыт';
-    Form1.Label11.Font.Color := clRed;
+
+         if Form1.SQLQuery1.fields[1].AsString = '2' then begin
+      Form1.Label11.Caption := 'Закрывается....';
+           Form1.Label11.Font.Color := clred;
+           form1.Shape9.Brush.Color:=clLime;
+           form1.Shape8.Brush.Color:=Clgreen;
+            form1.Shape7.Brush.Color:=clgreen;
+    end
+      else
+    if Form1.SQLQuery1.fields[1].AsString = '0' then
+    begin
+       Form1.Label11.Caption := 'Остановлен';
+      Form1.Label11.Font.Color := clolive;
+      form1.Shape7.Brush.Color:=clgreen;
+    form1.Shape8.Brush.Color:=Clgreen;
+    form1.Shape9.Brush.Color:=clgreen;
+      end;
         form1.gate2_t_level.Text:= Form1.SQLQuery1.fields[3].asstring;
     Form1.ProgressBar2.Position := Form1.SQLQuery1.fields[2].AsInteger;
     Form1.Label12.Caption :=
@@ -1007,27 +1139,54 @@ begin
   end;
 
   Form1.SQLQuery1.Next;
+    if Form1.SQLQuery1.fields[2].AsInteger > 0 then
+    zatvor3(True)
+   else
+     zatvor3(false);
+
   if Form1.SQLQuery1.fields[1].AsString = '1' then
   begin
-    zatvor3(True);
-    Form1.Label14.Caption := 'Открыт';
+
+    Form1.Label14.Caption := 'Открывается...';
     Form1.Label14.Font.Color := clLime;
+    form1.Shape4.Brush.Color:=clLime;
+    form1.Shape5.Brush.Color:=Clgreen;
+    form1.Shape6.Brush.Color:=clgreen;
+
+
     form1.gate3_t_level.Text:= Form1.SQLQuery1.fields[3].asstring;
     Form1.ProgressBar3.Position := Form1.SQLQuery1.fields[2].AsInteger;
     Form1.Label15.Caption := inttostr(Form1.SQLQuery1.fields[2].AsInteger) + '%';
   end
   else
   begin
-    zatvor3(False);
-    Form1.Label14.Caption := 'Закрыт';
-    Form1.Label14.Font.Color := clRed;
-        form1.gate3_t_level.Text:= Form1.SQLQuery1.fields[3].asstring;
+
+    if Form1.SQLQuery1.fields[1].AsString = '2' then begin
+      Form1.Label14.Caption := 'Закрывается....';
+           Form1.Label14.Font.Color := clred;
+           form1.Shape6.Brush.Color:=clLime;
+           form1.Shape5.Brush.Color:=Clgreen;
+           form1.Shape4.Brush.Color:=clgreen;
+    end
+      else
+    if Form1.SQLQuery1.fields[1].AsString = '0' then
+    begin
+       Form1.Label14.Caption := 'Остановлен';
+      Form1.Label14.Font.Color := clolive;
+      form1.Shape4.Brush.Color:=clgreen;
+      form1.Shape5.Brush.Color:=Clgreen;
+      form1.Shape6.Brush.Color:=clgreen;
+      end;
+    form1.gate3_t_level.Text:= Form1.SQLQuery1.fields[3].asstring;
     Form1.ProgressBar3.Position := Form1.SQLQuery1.fields[2].AsInteger;
     Form1.Label15.Caption :=
       inttostr(Form1.SQLQuery1.fields[2].AsInteger) + '%';
   end;
 
   Form1.SQLQuery1.Close;
+
+
+
 end;
 
 procedure TForm1.Timer_dateTimer(Sender: TObject);
@@ -1132,7 +1291,7 @@ begin
     Form1.SQLQuery2.Active := False;
     Form1.SQLQuery2.SQL.Clear;
     Form1.SQLQuery2.SQL.Add
-      ('SELECT name,status, level_metr FROM `status_zatvor`');
+      ('SELECT name,status, level_metr, procent_otk FROM `status_zatvor`');
     Form1.SQLQuery2.Active := True;
     Form1.SQLQuery2.First;
     Form1.StringGrid4.RowCount := Form1.SQLQuery2.RecordCount + 1;
@@ -1141,9 +1300,9 @@ begin
       for i := 0 to 2 do
       begin
         if i = 1 then
-          if Form1.SQLQuery2.fields[1].AsString = '0' then
+          if Form1.SQLQuery2.fields[3].AsInteger=0 then
             Form1.StringGrid4.Cells[1, j] := 'Закрыто'
-          else if Form1.SQLQuery2.fields[1].AsString = '1' then
+          else if Form1.SQLQuery2.fields[3].AsInteger>0 then
             Form1.StringGrid4.Cells[1, j] := 'Открыто'
           else
           begin

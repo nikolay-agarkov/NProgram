@@ -245,18 +245,18 @@ begin
         m_zatvor:=form7.sql_task_h.Fields[4].AsInteger;
 
       //Ћогическое услови€ открыти€ затворов и закрыти€ затворов
-        if (m_zatvor = 1 ) and (m_avv > m_max)  then begin
+        if (m_avv > m_max)  then begin
           form7.sql_task_h.active := False;
           form7.sql_task_h.SQL.Clear;
           form7.sql_task_h.SQL.Add
-           ('UPDATE `status_zatvor` SET `status` ="0", `open_level`="0" where `id` ="'+inttostr(i)+'" ');
+           ('UPDATE `status_zatvor` SET `cmd` ="2", `open_level`="0" where `id` ="'+inttostr(i)+'" ');
           Form7.sql_task_h.ExecSQL();
         end else
         if (m_zatvor = 0 ) and (m_avv < m_min)  then begin
           form7.sql_task_h.active := False;
           form7.sql_task_h.SQL.Clear;
           form7.sql_task_h.SQL.Add
-           ('UPDATE `status_zatvor` SET `status` ="1", `open_level`="100" where `id` ="'+inttostr(i)+'" ');
+           ('UPDATE `status_zatvor` SET `cmd` ="1", `open_level`="100" where `id` ="'+inttostr(i)+'" ');
           Form7.sql_task_h.ExecSQL();
         end;
 
@@ -276,23 +276,21 @@ t_h_o, t_m_o, t_h_c, t_m_c, tn_h, tn_m, status_gate: integer;
 st, t_open, t_close:string;
 Res2: TDateTime;
 begin
-// ќбработка автоматизации на времени
-
-
+  // ќбработка автоматизации на времени
     Res2 := Time;
     st:=form1.Label6.Caption;
     tn_h:= strtoint(copy(st,0,2));
     tn_m:=  strtoint(copy(st,4,2));
     form7.sql_task_h.active := False;
-//  showmessage (st);
-//  showmessage(inttostr(tn_m));
-   for i := 1 to 3 do // id затвора
+  //  showmessage (st);
+
+  //  showmessage(inttostr(tn_m));
+  for i := 1 to 3 do // id затвора
     begin
 
       form7.sql_task_h.SQL.Clear;
-      form7.sql_task_h.SQL.Add  ('select task_schedule.ID_Zatvor, task_schedule.Time_Open, task_schedule.Time_Close, status_zatvor.status FROM task_schedule INNER JOIN status_zatvor on status_zatvor.id= task_schedule.ID_Zatvor WHERE task_schedule.ID_Zatvor="'+inttostr(i)+'"');
+      form7.sql_task_h.SQL.Add ('select task_schedule.ID_Zatvor, task_schedule.Time_Open, task_schedule.Time_Close, status_zatvor.status FROM task_schedule INNER JOIN status_zatvor on status_zatvor.id=task_schedule.ID_Zatvor WHERE task_schedule.ID_Zatvor="'+inttostr(i)+'"');
       form7.sql_task_h.Active := True;
-
 
      if form7.sql_task_h.RecordCount>0 then
      begin
@@ -317,7 +315,7 @@ begin
                     form7.sql_task_h.active := False;
                     form7.sql_task_h.SQL.Clear;
                     form7.sql_task_h.SQL.Add
-                     ('UPDATE `status_zatvor` SET `status` ="1", `open_level`="100" where `id` ="'+inttostr(i)+'" ');
+                     ('UPDATE `status_zatvor` SET `cmd` ="1", `open_level`="100" where `id` ="'+inttostr(i)+'" ');
                     Form7.sql_task_h.ExecSQL();
           end
           else
@@ -325,7 +323,7 @@ begin
                     form7.sql_task_h.active := False;
                     form7.sql_task_h.SQL.Clear;
                     form7.sql_task_h.SQL.Add
-                     ('UPDATE `status_zatvor` SET `status` ="0", `open_level`="0" where `id` ="'+inttostr(i)+'" ');
+                     ('UPDATE `status_zatvor` SET `cmd` ="2", `open_level`="0" where `id` ="'+inttostr(i)+'" ');
                     Form7.sql_task_h.ExecSQL();
           end;
         end
