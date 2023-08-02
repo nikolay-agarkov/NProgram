@@ -1,32 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.951,C:\Users\Nikolay\Desktop\НИИ программа\about.dfm=C:\Users\Nikolay\Desktop\НИИ программа\Unit2.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.688,=C:\Users\Nikolay\Desktop\НИИ программа\Unit2.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.951,C:\Users\Nikolay\Desktop\НИИ программа\about.pas=C:\Users\Nikolay\Desktop\НИИ программа\Unit2.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.078,C:\Users\Nikolay\Desktop\НИИ программа\BD_connect.pas=C:\Users\Nikolay\Desktop\НИИ программа\Unit4.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.623,C:\Users\Nikolay\Desktop\НИИ программа\data_log.pas=C:\Users\Nikolay\Desktop\НИИ программа\Unit8.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.098,C:\Users\Nikolay\Desktop\НИИ программа\Unit5.dfm=C:\Users\Nikolay\Desktop\НИИ программа\sensors_hum.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.445,C:\Users\Nikolay\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\Nikolay\Desktop\НИИ программа\System_.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.936,=C:\Users\Nikolay\Desktop\НИИ программа\Unit6.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.614,C:\Users\Nikolay\Desktop\НИИ программа\logo.pas=C:\Users\Nikolay\Desktop\НИИ программа\Unit6.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.673,=C:\Users\Nikolay\Desktop\НИИ программа\Unit8.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.313,C:\Users\Nikolay\Desktop\НИИ программа\Project1.dproj=C:\Users\Nikolay\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.258,=C:\Users\Nikolay\Desktop\НИИ программа\Unit3.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.078,C:\Users\Nikolay\Desktop\НИИ программа\BD_connect.dfm=C:\Users\Nikolay\Desktop\НИИ программа\Unit4.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.313,C:\Users\Nikolay\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Nikolay\Desktop\НИИ программа\Project1.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.623,C:\Users\Nikolay\Desktop\НИИ программа\data_log.dfm=C:\Users\Nikolay\Desktop\НИИ программа\Unit8.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.806,=C:\Users\Nikolay\Desktop\НИИ программа\Unit4.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.098,C:\Users\Nikolay\Desktop\НИИ программа\Unit5.pas=C:\Users\Nikolay\Desktop\НИИ программа\sensors_hum.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.895,=C:\Users\Nikolay\Desktop\НИИ программа\Unit7.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.677,C:\Users\Nikolay\Desktop\НИИ программа\Unit7.pas=C:\Users\Nikolay\Desktop\НИИ программа\task.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.987,C:\Users\Nikolay\Desktop\НИИ программа\lang.dfm=C:\Users\Nikolay\Desktop\НИИ программа\Unit3.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.311,=C:\Users\Nikolay\Desktop\НИИ программа\Unit5.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.987,C:\Users\Nikolay\Desktop\НИИ программа\Unit3.pas=C:\Users\Nikolay\Desktop\НИИ программа\lang.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.820,=C:\Users\Nikolay\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.020,=C:\Users\Nikolay\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.445,C:\Users\Nikolay\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Nikolay\Desktop\НИИ программа\System_.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.614,C:\Users\Nikolay\Desktop\НИИ программа\logo.dfm=C:\Users\Nikolay\Desktop\НИИ программа\Unit6.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.677,C:\Users\Nikolay\Desktop\НИИ программа\Unit7.dfm=C:\Users\Nikolay\Desktop\НИИ программа\task.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.987,C:\Users\Nikolay\Desktop\НИИ программа\lang.pas=C:\Users\Nikolay\Desktop\НИИ программа\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.677,C:\Users\Nikolay\Desktop\НИИ программа\task.dfm=C:\Users\Nikolay\Desktop\НИИ программа\Unit7.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.445,C:\Users\Nikolay\Desktop\НИИ программа\System_.pas=C:\Users\Nikolay\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.098,C:\Users\Nikolay\Desktop\НИИ программа\sensors_hum.pas=C:\Users\Nikolay\Desktop\НИИ программа\Unit5.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.623,C:\Users\Nikolay\Desktop\НИИ программа\Unit8.pas=C:\Users\Nikolay\Desktop\НИИ программа\data_log.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.673,=C:\Users\Nikolay\Desktop\НИИ программа\Unit8.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.614,C:\Users\Nikolay\Desktop\НИИ программа\Unit6.dfm=C:\Users\Nikolay\Desktop\НИИ программа\logo.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.936,=C:\Users\Nikolay\Desktop\НИИ программа\Unit6.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.614,C:\Users\Nikolay\Desktop\НИИ программа\Unit6.pas=C:\Users\Nikolay\Desktop\НИИ программа\logo.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.445,C:\Users\Nikolay\Desktop\НИИ программа\System_.dfm=C:\Users\Nikolay\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.078,C:\Users\Nikolay\Desktop\НИИ программа\Unit4.pas=C:\Users\Nikolay\Desktop\НИИ программа\BD_connect.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.806,=C:\Users\Nikolay\Desktop\НИИ программа\Unit4.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.311,=C:\Users\Nikolay\Desktop\НИИ программа\Unit5.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.098,C:\Users\Nikolay\Desktop\НИИ программа\sensors_hum.dfm=C:\Users\Nikolay\Desktop\НИИ программа\Unit5.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.895,=C:\Users\Nikolay\Desktop\НИИ программа\Unit7.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.951,C:\Users\Nikolay\Desktop\НИИ программа\Unit2.dfm=C:\Users\Nikolay\Desktop\НИИ программа\about.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.677,C:\Users\Nikolay\Desktop\НИИ программа\task.pas=C:\Users\Nikolay\Desktop\НИИ программа\Unit7.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.623,C:\Users\Nikolay\Desktop\НИИ программа\Unit8.dfm=C:\Users\Nikolay\Desktop\НИИ программа\data_log.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.688,=C:\Users\Nikolay\Desktop\НИИ программа\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.951,C:\Users\Nikolay\Desktop\НИИ программа\Unit2.pas=C:\Users\Nikolay\Desktop\НИИ программа\about.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.987,C:\Users\Nikolay\Desktop\НИИ программа\Unit3.dfm=C:\Users\Nikolay\Desktop\НИИ программа\lang.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.078,C:\Users\Nikolay\Desktop\НИИ программа\Unit4.dfm=C:\Users\Nikolay\Desktop\НИИ программа\BD_connect.dfm</Transaction>
+    <Transaction>2023.08.01 20:19:01.634,=C:\Users\Николай Сергеевич\Documents\GitHub\NII_Program\Programm\Unit9.pas</Transaction>
+    <Transaction>2023.08.01 20:19:17.849,C:\Users\Николай Сергеевич\Documents\GitHub\NII_Program\Programm\sensor_set.pas=C:\Users\Николай Сергеевич\Documents\GitHub\NII_Program\Programm\Unit9.pas</Transaction>
+    <Transaction>2023.08.01 20:19:17.849,C:\Users\Николай Сергеевич\Documents\GitHub\NII_Program\Programm\sensor_set.dfm=C:\Users\Николай Сергеевич\Documents\GitHub\NII_Program\Programm\Unit9.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="about.pas"/>
@@ -45,5 +48,7 @@
     <File Path="System_.dfm"/>
     <File Path="task.pas"/>
     <File Path="task.dfm"/>
+    <File Path="sensor_set.pas"/>
+    <File Path="sensor_set.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

@@ -9,7 +9,8 @@ uses
   sensors_hum in 'sensors_hum.pas' {Form5},
   logo in 'logo.pas' {Form6},
   task in 'task.pas' {Form7},
-  data_log in 'data_log.pas' {Form8};
+  data_log in 'data_log.pas' {Form8},
+  sensor_set in 'sensor_set.pas' {Form9};
 
 {$R *.res}
 
@@ -23,6 +24,7 @@ begin
   Application.CreateForm(TForm5, Form5);
   Application.CreateForm(TForm7, Form7);
   Application.CreateForm(TForm8, Form8);
+  Application.CreateForm(TForm9, Form9);
   Application.Run;
 
 

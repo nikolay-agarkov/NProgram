@@ -158,6 +158,10 @@ type
     Shape7: TShape;
     Shape8: TShape;
     Shape9: TShape;
+    gate1_open_lev: TLabel;
+    gate2_open_lev: TLabel;
+    gate3_open_lev: TLabel;
+    N2: TMenuItem;
     procedure Timer_dateTimer(Sender: TObject);
     procedure N4Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -187,6 +191,7 @@ type
     procedure Button10Click(Sender: TObject);
     procedure Button9Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -205,7 +210,7 @@ implementation
 
 {$R *.dfm}
 
-uses lang, about, BD_connect, logo, task, data_log;
+uses lang, about, BD_connect, logo, task, data_log, sensor_set;
 
 procedure con_sql();
 var
@@ -605,7 +610,7 @@ begin
 er12 := False;
   Form1.StringGrid3.Cells[0, 0] := 'Название затвора';
   Form1.StringGrid3.Cells[1, 0] := 'Q = m^3/c';
-  Form1.StringGrid3.Cells[2, 0] := 'W = m^3';
+//  Form1.StringGrid3.Cells[2, 0] := 'W = m^3';
 
   Form1.StringGrid4.Cells[0, 0] := 'Название затвора';
   Form1.StringGrid4.Cells[1, 0] := 'Статус';
@@ -627,6 +632,10 @@ er12 := False;
      else
        form7.task_t.Enabled:=true;
 
+  form1.Panel15.Enabled:=true;
+  form1.GroupBox1.Color:=clMoneyGreen;
+  form1.GroupBox2.Color:=clMoneyGreen;
+  form1.GroupBox3.Color:=clMoneyGreen;
 end;
 
 procedure TForm1.Image7Click(Sender: TObject);
@@ -662,6 +671,11 @@ begin
   end
   else
     MessageBox(Form1.Handle, 'Нет связи с БД', '', MB_ICONINFORMATION);
+end;
+
+procedure TForm1.N2Click(Sender: TObject);
+begin
+form9.showmodal;
 end;
 
 procedure TForm1.N3Click(Sender: TObject);
@@ -704,7 +718,11 @@ procedure TForm1.RadioButton1Click(Sender: TObject);
 begin
   if bd_c = True then
   begin
-    Panel15.Enabled := True;
+    form1.Panel15.Enabled:=true;
+    form1.GroupBox1.Enabled:=true;
+    form1.GroupBox2.Enabled:=true;
+    form1.GroupBox3.Enabled:=true;
+
     form1.GroupBox1.Color:=clwhite;
     form1.GroupBox2.Color:=clwhite;
     form1.GroupBox3.Color:=clwhite;
@@ -720,10 +738,14 @@ end;
 
 procedure TForm1.RadioButton2Click(Sender: TObject);
 begin
-    Panel15.Enabled := False;
-  form1.GroupBox1.Color:=clMoneyGreen;
-  form1.GroupBox2.Color:=clMoneyGreen;
-  form1.GroupBox3.Color:=clMoneyGreen;
+    form1.Panel15.Enabled:=true;
+    form1.GroupBox1.Enabled:=false;
+    form1.GroupBox2.Enabled:=false;
+    form1.GroupBox3.Enabled:=false;
+
+    form1.GroupBox1.Color:=clMoneyGreen;
+    form1.GroupBox2.Color:=clMoneyGreen;
+    form1.GroupBox3.Color:=clMoneyGreen;
      if form7.RadioButton2.Checked=true then
         form7.task_h.Enabled:=true;
      if form7.RadioButton1.Checked=true then
@@ -762,7 +784,7 @@ begin
         begin
           er1 := False;
           Form1.gate_1.Color := clSkyBlue;
-          form1.gate_1.Hint:='OK';
+          form1.gate_1.Hint:='Затвор в норме';
           form1.gate_1.ShowHint:=true;
         end;
 
@@ -781,7 +803,7 @@ begin
         begin
           er2 := False;
           Form1.Gate_2.Color := clSkyBlue;
-            form1.gate_2.Hint:='OK';
+            form1.gate_2.Hint:='Затвор в норме';
             form1.gate_2.ShowHint:=true;
         end;
 
@@ -800,7 +822,7 @@ begin
         begin
           er3 := False;
           Form1.Gate_3.Color := clSkyBlue;
-          form1.gate_3.Hint:='OK';
+          form1.gate_3.Hint:='Затвор в норме';
           form1.gate_3.ShowHint:=true;
         end;
 
@@ -820,7 +842,7 @@ begin
         begin
           er4 := False;
           Form1.gate1_water_sensor.Color := clSkyBlue;
-          form1.gate1_water_sensor.Hint:='OK';
+          form1.gate1_water_sensor.Hint:='Датчик уровня воды в норме';
             form1.gate1_water_sensor.ShowHint:=true;
         end;
 
@@ -839,7 +861,7 @@ begin
         begin
           er5 := False;
           Form1.gate2_water_sensor.Color := clSkyBlue;
-          form1.gate2_water_sensor.Hint:='OK';
+          form1.gate2_water_sensor.Hint:='Датчик уровня воды в норме';
             form1.gate2_water_sensor.ShowHint:=true;
         end;
 
@@ -858,7 +880,7 @@ begin
         begin
           er6 := False;
           Form1.gate3_water_sensor.Color := clSkyBlue;
-          form1.gate3_water_sensor.Hint:='OK';
+          form1.gate3_water_sensor.Hint:='Датчик уровня воды в норме';
             form1.gate3_water_sensor.ShowHint:=true;
         end;
 
@@ -1063,6 +1085,9 @@ begin
     form1.gate1_t_level.Text:= Form1.SQLQuery1.fields[3].asstring;
     Form1.ProgressBar1.Position := Form1.SQLQuery1.fields[2].AsInteger;
     Form1.Label9.Caption := inttostr(Form1.SQLQuery1.fields[2].AsInteger) + '%';
+    form1.gate1_open_lev.Caption:=form1.Label9.Caption;
+          form1.Gate1_open_lev.Hint:='% открытия затвора';
+      form1.gate1_open_lev.ShowHint:=true;
 
   end
   else
@@ -1112,6 +1137,9 @@ begin
     Form1.ProgressBar2.Position := Form1.SQLQuery1.fields[2].AsInteger;
     Form1.Label12.Caption :=
       inttostr(Form1.SQLQuery1.fields[2].AsInteger) + '%';
+    form1.gate2_open_lev.Caption:=form1.Label12.Caption;
+          form1.Gate2_open_lev.Hint:='% открытия затвора';
+      form1.gate2_open_lev.ShowHint:=true;
   end
   else
   begin
@@ -1136,6 +1164,9 @@ begin
     Form1.ProgressBar2.Position := Form1.SQLQuery1.fields[2].AsInteger;
     Form1.Label12.Caption :=
       inttostr(Form1.SQLQuery1.fields[2].AsInteger) + '%';
+      form1.gate2_open_lev.Caption:=form1.Label12.Caption;
+      form1.Gate2_open_lev.Hint:='% открытия затвора';
+      form1.gate2_open_lev.ShowHint:=true;
   end;
 
   Form1.SQLQuery1.Next;
@@ -1157,6 +1188,9 @@ begin
     form1.gate3_t_level.Text:= Form1.SQLQuery1.fields[3].asstring;
     Form1.ProgressBar3.Position := Form1.SQLQuery1.fields[2].AsInteger;
     Form1.Label15.Caption := inttostr(Form1.SQLQuery1.fields[2].AsInteger) + '%';
+    form1.gate3_open_lev.Caption:=form1.Label15.Caption;
+          form1.Gate3_open_lev.Hint:='% открытия затвора';
+      form1.gate3_open_lev.ShowHint:=true;
   end
   else
   begin
@@ -1322,7 +1356,7 @@ begin
     Form1.StringGrid3.RowCount := Form1.SQLQuery2.RecordCount + 1;
     for j := 1 to Form1.SQLQuery2.RecordCount do
     begin
-      for i := 0 to 2 do
+      for i := 0 to 1 do
       begin
         Form1.StringGrid3.Cells[i, j] := Form1.SQLQuery2.fields[i].AsString;
       end;
