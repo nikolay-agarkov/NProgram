@@ -1,0 +1,103 @@
+<mxfile host="app.diagrams.net" modified="2023-04-20T15:49:39.764Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.62" etag="Hw-ALBnHIdomy1QMiO6o" version="21.2.1" type="device">
+  <diagram name="Страница 1" id="HZYVIcM374mo-EMTem6T">
+    <mxGraphModel dx="823" dy="484" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-1" target="q8EaqAS9WOfPYYKV1qn3-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-1" target="q8EaqAS9WOfPYYKV1qn3-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-1" value="Подключение к БД" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="110" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-3" target="q8EaqAS9WOfPYYKV1qn3-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-3" value="Если ошибка при подключении" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="210" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-5" target="q8EaqAS9WOfPYYKV1qn3-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-5" value="Вывести сообщение об ошибки" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="410" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-7" value="Предложить пользователю внести изменения в параметры подключения к БД" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="600" y="140" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-9" target="q8EaqAS9WOfPYYKV1qn3-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-9" target="q8EaqAS9WOfPYYKV1qn3-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-9" target="q8EaqAS9WOfPYYKV1qn3-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-9" target="q8EaqAS9WOfPYYKV1qn3-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-9" value="При успешном подключении к БД" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="270" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-13" target="q8EaqAS9WOfPYYKV1qn3-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-13" value="Вывести текущие показания датчиков влажности" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="440" y="220" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-15" target="q8EaqAS9WOfPYYKV1qn3-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-15" value="Вывести текущие показания датчиков уровня воды на гидропостах" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="440" y="290" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-17" target="q8EaqAS9WOfPYYKV1qn3-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-17" target="q8EaqAS9WOfPYYKV1qn3-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-17" value="Вывести статус завторов (Открыт, закрыт)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="440" y="360" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-19" value="Производится расчет водопотребления" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="440" y="430" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-22" value="Автоматическое управление затворами" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="650" y="330" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-24" target="q8EaqAS9WOfPYYKV1qn3-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-24" target="q8EaqAS9WOfPYYKV1qn3-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="q8EaqAS9WOfPYYKV1qn3-24" target="q8EaqAS9WOfPYYKV1qn3-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-24" value="Ручное управление затворами" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="650" y="390" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-27" value="Управление затвором 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="860" y="370" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-29" value="Управление затвором 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="860" y="410" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-30" value="Управление затвором 3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="860" y="450" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-33" value="Настройка подключенных датчиков" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="650" y="230" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="q8EaqAS9WOfPYYKV1qn3-34" value="Настройка подключенных датчиков" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="650" y="280" width="180" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
