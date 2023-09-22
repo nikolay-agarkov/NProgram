@@ -452,6 +452,13 @@ object Form1: TForm1
         Font.Style = [fsBold, fsItalic]
         ParentFont = False
       end
+      object Label33: TLabel
+        Left = 176
+        Top = 400
+        Width = 40
+        Height = 15
+        Caption = 'Label33'
+      end
       object Panel2: TPanel
         Left = 56
         Top = 63
@@ -2054,10 +2061,6 @@ object Form1: TForm1
         Align = alClient
         Enabled = False
         TabOrder = 2
-        ExplicitLeft = 7
-        ExplicitTop = 119
-        ExplicitWidth = 299
-        ExplicitHeight = 289
         object TabSheet1: TTabSheet
           Caption = #1047#1072#1090#1074#1086#1088' 1'
           object GroupBox1: TGroupBox
@@ -2076,8 +2079,6 @@ object Form1: TForm1
             ParentColor = False
             ParentFont = False
             TabOrder = 0
-            ExplicitWidth = 291
-            ExplicitHeight = 259
             object Label7: TLabel
               Left = 16
               Top = 16
@@ -2272,10 +2273,6 @@ object Form1: TForm1
             ParentColor = False
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 3
-            ExplicitTop = 3
-            ExplicitWidth = 285
-            ExplicitHeight = 253
             object Label10: TLabel
               Left = 16
               Top = 16
@@ -2476,10 +2473,6 @@ object Form1: TForm1
             ParentColor = False
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 3
-            ExplicitTop = 4
-            ExplicitWidth = 285
-            ExplicitHeight = 256
             object Label13: TLabel
               Left = 16
               Top = 16
@@ -2509,7 +2502,7 @@ object Form1: TForm1
             object Label15: TLabel
               Left = 24
               Top = 220
-              Width = 25
+              Width = 7
               Height = 17
               Caption = '1'
               Font.Charset = DEFAULT_CHARSET
@@ -2718,6 +2711,14 @@ object Form1: TForm1
         Font.Name = 'Segoe UI'
         Font.Style = [fsBold, fsItalic]
         ParentFont = False
+      end
+      object Label32: TLabel
+        Left = 8
+        Top = 24
+        Width = 18
+        Height = 15
+        Caption = '134'
+        Visible = False
       end
     end
     object Panel18: TPanel
@@ -2943,6 +2944,15 @@ object Form1: TForm1
               Font.Style = []
               ParentFont = False
             end
+            object Label34: TLabel
+              Left = 328
+              Top = 73
+              Width = 40
+              Height = 15
+              Caption = 'Label34'
+              Visible = False
+              WordWrap = True
+            end
             object StringGrid3: TStringGrid
               AlignWithMargins = True
               Left = 4
@@ -2951,7 +2961,7 @@ object Form1: TForm1
               Height = 333
               Align = alBottom
               BorderStyle = bsNone
-              ColCount = 2
+              ColCount = 3
               FixedCols = 0
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -2961,8 +2971,9 @@ object Form1: TForm1
               ParentFont = False
               TabOrder = 0
               ColWidths = (
-                245
-                197)
+                158
+                130
+                187)
             end
           end
         end
@@ -3248,5 +3259,10 @@ object Form1: TForm1
     SQLConnection = SQLConnection1
     Left = 1051
     Top = 244
+  end
+  object Timer_rashod: TTimer
+    OnTimer = Timer_rashodTimer
+    Left = 819
+    Top = 36
   end
 end

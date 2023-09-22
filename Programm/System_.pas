@@ -162,6 +162,10 @@ type
     gate2_open_lev: TLabel;
     gate3_open_lev: TLabel;
     N2: TMenuItem;
+    Label32: TLabel;
+    Label33: TLabel;
+    Timer_rashod: TTimer;
+    Label34: TLabel;
     procedure Timer_dateTimer(Sender: TObject);
     procedure N4Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -192,6 +196,7 @@ type
     procedure Button9Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
+    procedure Timer_rashodTimer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -205,6 +210,8 @@ var
   bd_c: Boolean;
   er1, er2, er3, er4, er5, er6, er7, er8, er9, er10, er11, er12: Boolean;
    k,last_value:integer;
+  Res: TDateTime;
+  Res2: TDateTime;
 
 implementation
 
@@ -245,7 +252,9 @@ begin
     Form1.Timer1.Enabled := True;
     Form1.Button4.Enabled := False;
     Form1.scan_error.Enabled := True;
+    form1.Label32.Caption:='134';
   except
+
     Form1.Timer_bd.Enabled := False;
     Form1.Panel17.Caption := 'Связь с БД';
     Form1.Panel17.Color := clRed;
@@ -256,7 +265,8 @@ begin
     Form1.Timer1.Enabled := False;
     Form1.Button4.Enabled := True;
     Form1.scan_error.Enabled := False;
-    MessageBox(Form1.Handle, 'Ошибка подключения БД', '', MB_ICONError);
+    form1.Label32.Caption:='138';
+
   end;
 end;
 
@@ -474,7 +484,9 @@ end;
 
 procedure TForm1.Button4Click(Sender: TObject);
 begin
-  con_sql();
+  if form1.Label32.Caption='134' then
+   con_sql();
+
 end;
 
 procedure TForm1.Button5Click(Sender: TObject);
@@ -609,8 +621,8 @@ begin
   er11 := False;
 er12 := False;
   Form1.StringGrid3.Cells[0, 0] := 'Название затвора';
-  Form1.StringGrid3.Cells[1, 0] := 'Q = m^3/c';
-//  Form1.StringGrid3.Cells[2, 0] := 'W = m^3';
+  Form1.StringGrid3.Cells[1, 0] := 'Q = m^3/c (л/с)';
+  Form1.StringGrid3.Cells[2, 0] := 'W = m^3  (м^3)';
 
   Form1.StringGrid4.Cells[0, 0] := 'Название затвора';
   Form1.StringGrid4.Cells[1, 0] := 'Статус';
@@ -624,7 +636,8 @@ er12 := False;
   Form1.StringGrid1.Cells[2, 0] := 'Влажность';
   Form1.StringGrid1.Cells[3, 0] := '% влажности';
   Form1.StringGrid1.Cells[4, 0] := 'Температура почвы';
-  con_sql();
+  if form1.Label32.Caption='134' then
+   con_sql();
 
   if bd_c=true and form1.RadioButton2.Checked  then
      if form7.RadioButton2.Checked then
@@ -757,6 +770,7 @@ var
   j, i: integer;
 
 begin
+
   if bd_c = True then
   begin
     Form1.query_scan_err.SQL.Clear;
@@ -1043,6 +1057,7 @@ begin
     Form1.SQLQuery2.SQL.Clear;
     Form1.SQLQuery2.SQL.Add('SELECT `name`,`level_water` FROM `sensor_level`');
     Form1.SQLQuery2.Active := True;
+    form1.Label32.Caption:='134';
 
   except
 
@@ -1055,7 +1070,9 @@ begin
     form7.timer_bd_sc.Enabled := False;
     Form1.Timer1.Enabled := False;
     Form1.Button4.Enabled := True;
-    MessageBox(Form1.Handle, 'Ошибка подключения БД', '', MB_ICONError);
+form1.Label32.Caption:='138';
+
+
   end;
 
 end;
@@ -1224,23 +1241,31 @@ begin
 end;
 
 procedure TForm1.Timer_dateTimer(Sender: TObject);
-var
-  Res: TDateTime;
-  Res2: TDateTime;
+
 begin
   Res := Date;
   Res2 := Time;
   Label6.Caption := FormatDateTime('hh:nn:ss',Res2);
-  Label4.Caption := DateToStr(Res);
+  Label4.Caption := FormatDateTime('yyyy-mm-dd',Res);
 
 end;
+
+procedure TForm1.Timer_rashodTimer(Sender: TObject);
+var
+i: integer;
+begin
+
+ if bd_c = True then
+
+
+ end;
 
 procedure TForm1.T_bd_value_nowTimer(Sender: TObject);
 var
   i, j: integer;
   k, all_sum:integer;
   sr:double;
-  st: string;
+  st,st1: string;
 begin
   all_sum:=0;
   if bd_c = True then
@@ -1356,14 +1381,81 @@ begin
     Form1.StringGrid3.RowCount := Form1.SQLQuery2.RecordCount + 1;
     for j := 1 to Form1.SQLQuery2.RecordCount do
     begin
-      for i := 0 to 1 do
+      for i := 0 to 0 do
       begin
         Form1.StringGrid3.Cells[i, j] := Form1.SQLQuery2.fields[i].AsString;
+      end;
+
+      for i := 1 to 1 do
+      begin
+        Form1.StringGrid3.Cells[i, j] := Form1.SQLQuery2.fields[i].AsString+' л/c';
+      end;
+      for i := 2 to 2 do
+      begin
+        Form1.StringGrid3.Cells[i, j] := Form1.SQLQuery2.fields[i].AsString + ' м^3';
       end;
       Form1.SQLQuery2.Next;
     end;
 
-  end;
+    Form1.SQLQuery2.Active := False;
+
+    for i := 1 to 3 do
+      begin
+        Form1.SQLQuery2.SQL.Clear;
+        st1:= Form1.StringGrid3.Cells[1, i];
+        delete (st1,length(st1)-3,4);
+        Form1.SQLQuery2.SQL.Add
+        ('INSERT INTO rashod_d  VALUES ('+QuotedStr(label4.caption)+','+QuotedStr(label6.caption)+','+QuotedStr(Form1.StringGrid3.Cells[0, i])+','+st1+')');
+        Form1.SQLQuery2.ExecSQL();
+      end;
+
+    Form1.SQLQuery2.Active := False;
+    Form1.SQLQuery2.SQL.Clear;
+    Form1.SQLQuery2.SQL.Add
+      ('SELECT SUM(rashod_t) FROM `rashod_d` where zatvor_id="Затвор 1"');
+    Form1.SQLQuery2.Active := True;
+    Form1.SQLQuery2.First;
+    label34.Caption:=Form1.SQLQuery2.Fields[0].AsString;
+    Form1.SQLQuery2.Active := False;
+    Form1.SQLQuery2.SQL.Clear;
+    Form1.SQLQuery2.SQL.Add
+    ('UPDATE sensor_level SET rashod_k='+QuotedStr(label34.Caption)+' where name="Затвор 1"');
+    Form1.SQLQuery2.ExecSQL();
+       Form1.SQLQuery2.SQL.Clear;
+
+
+    Form1.SQLQuery2.Active := False;
+    Form1.SQLQuery2.SQL.Clear;
+    Form1.SQLQuery2.SQL.Add
+      ('SELECT SUM(rashod_t) FROM `rashod_d` where zatvor_id="Затвор 2"');
+    Form1.SQLQuery2.Active := True;
+    Form1.SQLQuery2.First;
+    label34.Caption:=Form1.SQLQuery2.Fields[0].AsString;
+    Form1.SQLQuery2.Active := False;
+    Form1.SQLQuery2.SQL.Clear;
+    Form1.SQLQuery2.SQL.Add
+    ('UPDATE sensor_level SET rashod_k='+QuotedStr(label34.Caption)+' where name="Затвор 2"');
+    Form1.SQLQuery2.ExecSQL();
+    Form1.SQLQuery2.SQL.Clear;
+
+
+    Form1.SQLQuery2.Active := False;
+    Form1.SQLQuery2.SQL.Clear;
+    Form1.SQLQuery2.SQL.Add
+      ('SELECT SUM(rashod_t) FROM `rashod_d` where zatvor_id="Затвор 3"');
+    Form1.SQLQuery2.Active := True;
+    Form1.SQLQuery2.First;
+    label34.Caption:=Form1.SQLQuery2.Fields[0].AsString;
+    Form1.SQLQuery2.Active := False;
+    Form1.SQLQuery2.SQL.Clear;
+    Form1.SQLQuery2.SQL.Add
+    ('UPDATE sensor_level SET rashod_k='+QuotedStr(label34.Caption)+' where name="Затвор 3"');
+    Form1.SQLQuery2.ExecSQL();
+       Form1.SQLQuery2.SQL.Clear;
+
+    end;
+
+
 end;
 
 end.

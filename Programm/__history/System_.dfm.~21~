@@ -452,6 +452,13 @@ object Form1: TForm1
         Font.Style = [fsBold, fsItalic]
         ParentFont = False
       end
+      object Label33: TLabel
+        Left = 176
+        Top = 400
+        Width = 40
+        Height = 15
+        Caption = 'Label33'
+      end
       object Panel2: TPanel
         Left = 56
         Top = 63
@@ -711,16 +718,14 @@ object Form1: TForm1
         object gate2_open_lev: TLabel
           Left = 40
           Top = 178
-          Width = 87
+          Width = 3
           Height = 15
-          Caption = 'gate1_open_lev'
         end
         object gate3_open_lev: TLabel
           Left = 40
           Top = 40
-          Width = 87
+          Width = 3
           Height = 15
-          Caption = 'gate1_open_lev'
         end
         object Gate_2: TPanel
           Left = 0
@@ -1158,9 +1163,8 @@ object Form1: TForm1
           object gate1_open_lev: TLabel
             Left = 36
             Top = 0
-            Width = 87
+            Width = 3
             Height = 15
-            Caption = 'gate1_open_lev'
           end
           object Panel10: TPanel
             Left = 5
@@ -2053,14 +2057,10 @@ object Form1: TForm1
         Top = 113
         Width = 319
         Height = 386
-        ActivePage = TabSheet3
+        ActivePage = TabSheet2
         Align = alClient
         Enabled = False
         TabOrder = 2
-        ExplicitLeft = 7
-        ExplicitTop = 119
-        ExplicitWidth = 299
-        ExplicitHeight = 289
         object TabSheet1: TTabSheet
           Caption = #1047#1072#1090#1074#1086#1088' 1'
           object GroupBox1: TGroupBox
@@ -2079,8 +2079,6 @@ object Form1: TForm1
             ParentColor = False
             ParentFont = False
             TabOrder = 0
-            ExplicitWidth = 291
-            ExplicitHeight = 259
             object Label7: TLabel
               Left = 16
               Top = 16
@@ -2275,10 +2273,6 @@ object Form1: TForm1
             ParentColor = False
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 3
-            ExplicitTop = 3
-            ExplicitWidth = 285
-            ExplicitHeight = 253
             object Label10: TLabel
               Left = 16
               Top = 16
@@ -2479,10 +2473,6 @@ object Form1: TForm1
             ParentColor = False
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 3
-            ExplicitTop = 4
-            ExplicitWidth = 285
-            ExplicitHeight = 256
             object Label13: TLabel
               Left = 16
               Top = 16
@@ -2512,7 +2502,7 @@ object Form1: TForm1
             object Label15: TLabel
               Left = 24
               Top = 220
-              Width = 25
+              Width = 7
               Height = 17
               Caption = '1'
               Font.Charset = DEFAULT_CHARSET
@@ -2721,6 +2711,13 @@ object Form1: TForm1
         Font.Name = 'Segoe UI'
         Font.Style = [fsBold, fsItalic]
         ParentFont = False
+      end
+      object Label32: TLabel
+        Left = 8
+        Top = 24
+        Width = 18
+        Height = 15
+        Caption = '134'
       end
     end
     object Panel18: TPanel
@@ -2954,7 +2951,7 @@ object Form1: TForm1
               Height = 333
               Align = alBottom
               BorderStyle = bsNone
-              ColCount = 2
+              ColCount = 3
               FixedCols = 0
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -2964,8 +2961,9 @@ object Form1: TForm1
               ParentFont = False
               TabOrder = 0
               ColWidths = (
-                245
-                197)
+                158
+                159
+                124)
             end
           end
         end
@@ -3160,6 +3158,10 @@ object Form1: TForm1
         Caption = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1080#1077' '#1041#1044
         OnClick = N7Click
       end
+      object N2: TMenuItem
+        Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1072' '#1076#1072#1090#1095#1080#1082#1086#1074
+        OnClick = N2Click
+      end
       object N8: TMenuItem
         Caption = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1080#1077' '#1079#1072#1076#1072#1095#1080
         OnClick = N8Click
@@ -3247,5 +3249,10 @@ object Form1: TForm1
     SQLConnection = SQLConnection1
     Left = 1051
     Top = 244
+  end
+  object Timer_rashod: TTimer
+    OnTimer = Timer_rashodTimer
+    Left = 819
+    Top = 36
   end
 end
