@@ -458,6 +458,7 @@ object Form1: TForm1
         Width = 40
         Height = 15
         Caption = 'Label33'
+        Visible = False
       end
       object Panel2: TPanel
         Left = 56
@@ -2734,7 +2735,7 @@ object Form1: TForm1
         Top = 1
         Width = 496
         Height = 461
-        ActivePage = TabSheet6
+        ActivePage = TabSheet4
         Align = alClient
         TabOrder = 0
         object TabSheet4: TTabSheet
@@ -2804,6 +2805,7 @@ object Form1: TForm1
               Width = 480
               Height = 333
               Align = alBottom
+              ColCount = 4
               FixedCols = 0
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -2814,10 +2816,9 @@ object Form1: TForm1
               TabOrder = 0
               ColWidths = (
                 110
-                62
-                92
-                84
-                133)
+                74
+                135
+                147)
             end
             object ComboBox1: TComboBox
               Left = 376

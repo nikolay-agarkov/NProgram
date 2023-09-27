@@ -635,7 +635,7 @@ er12 := False;
   Form1.StringGrid1.Cells[1, 0] := '';
   Form1.StringGrid1.Cells[2, 0] := 'Влажность';
   Form1.StringGrid1.Cells[3, 0] := '% влажности';
-  Form1.StringGrid1.Cells[4, 0] := 'Температура почвы';
+  //Form1.StringGrid1.Cells[4, 0] := 'Температура почвы';
   if form1.Label32.Caption='134' then
    con_sql();
 
@@ -1294,7 +1294,7 @@ begin
     Form1.StringGrid1.RowCount := Form1.SQLQuery2.RecordCount + 1;
     for j := 1 to Form1.SQLQuery2.RecordCount do
     begin
-      for i := 0 to 4 do
+      for i := 0 to 3 do
       begin
         Form1.StringGrid1.Cells[i, j] := Form1.SQLQuery2.fields[i].AsString;
       end;

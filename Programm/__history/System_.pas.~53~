@@ -1246,7 +1246,7 @@ begin
   Res := Date;
   Res2 := Time;
   Label6.Caption := FormatDateTime('hh:nn:ss',Res2);
-  Label4.Caption := DateToStr(Res);
+  Label4.Caption := FormatDateTime('yyyy-mm-dd',Res);
 
 end;
 
@@ -1405,9 +1405,54 @@ begin
         st1:= Form1.StringGrid3.Cells[1, i];
         delete (st1,length(st1)-3,4);
         Form1.SQLQuery2.SQL.Add
-        ('INSERT INTO rashod_d  VALUES ('+QuotedStr(label4.caption)+','+QuotedStr(Form1.StringGrid3.Cells[0, i])+','+st1+')');
+        ('INSERT INTO rashod_d  VALUES ('+QuotedStr(label4.caption)+','+QuotedStr(label6.caption)+','+QuotedStr(Form1.StringGrid3.Cells[0, i])+','+st1+')');
         Form1.SQLQuery2.ExecSQL();
       end;
+
+    Form1.SQLQuery2.Active := False;
+    Form1.SQLQuery2.SQL.Clear;
+    Form1.SQLQuery2.SQL.Add
+      ('SELECT SUM(rashod_t) FROM `rashod_d` where zatvor_id="Затвор 1"');
+    Form1.SQLQuery2.Active := True;
+    Form1.SQLQuery2.First;
+    label34.Caption:=Form1.SQLQuery2.Fields[0].AsString;
+    Form1.SQLQuery2.Active := False;
+    Form1.SQLQuery2.SQL.Clear;
+    Form1.SQLQuery2.SQL.Add
+    ('UPDATE sensor_level SET rashod_k='+QuotedStr(label34.Caption)+' where name="Затвор 1"');
+    Form1.SQLQuery2.ExecSQL();
+       Form1.SQLQuery2.SQL.Clear;
+
+
+    Form1.SQLQuery2.Active := False;
+    Form1.SQLQuery2.SQL.Clear;
+    Form1.SQLQuery2.SQL.Add
+      ('SELECT SUM(rashod_t) FROM `rashod_d` where zatvor_id="Затвор 2"');
+    Form1.SQLQuery2.Active := True;
+    Form1.SQLQuery2.First;
+    label34.Caption:=Form1.SQLQuery2.Fields[0].AsString;
+    Form1.SQLQuery2.Active := False;
+    Form1.SQLQuery2.SQL.Clear;
+    Form1.SQLQuery2.SQL.Add
+    ('UPDATE sensor_level SET rashod_k='+QuotedStr(label34.Caption)+' where name="Затвор 2"');
+    Form1.SQLQuery2.ExecSQL();
+    Form1.SQLQuery2.SQL.Clear;
+
+
+    Form1.SQLQuery2.Active := False;
+    Form1.SQLQuery2.SQL.Clear;
+    Form1.SQLQuery2.SQL.Add
+      ('SELECT SUM(rashod_t) FROM `rashod_d` where zatvor_id="Затвор 3"');
+    Form1.SQLQuery2.Active := True;
+    Form1.SQLQuery2.First;
+    label34.Caption:=Form1.SQLQuery2.Fields[0].AsString;
+    Form1.SQLQuery2.Active := False;
+    Form1.SQLQuery2.SQL.Clear;
+    Form1.SQLQuery2.SQL.Add
+    ('UPDATE sensor_level SET rashod_k='+QuotedStr(label34.Caption)+' where name="Затвор 3"');
+    Form1.SQLQuery2.ExecSQL();
+       Form1.SQLQuery2.SQL.Clear;
+
     end;
 
 
