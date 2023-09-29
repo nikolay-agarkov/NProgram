@@ -633,8 +633,8 @@ er12 := False;
 
   Form1.StringGrid1.Cells[0, 0] := 'Название датчика';
   Form1.StringGrid1.Cells[1, 0] := '';
-  Form1.StringGrid1.Cells[2, 0] := 'Влажность';
-  Form1.StringGrid1.Cells[3, 0] := '% влажности';
+  //Form1.StringGrid1.Cells[2, 0] := 'Влажность';
+  Form1.StringGrid1.Cells[2, 0] := '% влажности';
   //Form1.StringGrid1.Cells[4, 0] := 'Температура почвы';
   if form1.Label32.Caption='134' then
    con_sql();
@@ -1283,10 +1283,10 @@ begin
     Form1.SQLQuery2.SQL.Clear;
     if Form1.ComboBox1.Text = 'Все поля' then
       Form1.SQLQuery2.SQL.Add
-        ('SELECT sensors_hum.name, sensor_values.id_sensors, sensor_values.hum_val, sensor_values.hum_val_proc, sensor_values.temp_val FROM `sensors_hum` RIGHT JOIN `sensor_values` on sensors_hum.id_sensors=sensor_values.id_sensors where sensors_hum.Active="1"')
+        ('SELECT sensors_hum.name, sensor_values.id_sensors,  sensor_values.hum_val_proc, sensor_values.temp_val FROM `sensors_hum` RIGHT JOIN `sensor_values` on sensors_hum.id_sensors=sensor_values.id_sensors where sensors_hum.Active="1"')
     else
       Form1.SQLQuery2.SQL.Add
-        ('SELECT sensors_hum.name, sensor_values.id_sensors, sensor_values.hum_val, sensor_values.hum_val_proc, sensor_values.temp_val FROM `sensors_hum` RIGHT JOIN `sensor_values` on sensors_hum.id_sensors=sensor_values.id_sensors WHERE sensors_hum.id_pole='
+        ('SELECT sensors_hum.name, sensor_values.id_sensors,  sensor_values.hum_val_proc, sensor_values.temp_val FROM `sensors_hum` RIGHT JOIN `sensor_values` on sensors_hum.id_sensors=sensor_values.id_sensors WHERE sensors_hum.id_pole='
         + Form1.ComboBox1.Text + ' and sensors_hum.Active="1"');
     Form1.SQLQuery2.Active := True;
     Form1.SQLQuery2.First;
@@ -1294,11 +1294,11 @@ begin
     Form1.StringGrid1.RowCount := Form1.SQLQuery2.RecordCount + 1;
     for j := 1 to Form1.SQLQuery2.RecordCount do
     begin
-      for i := 0 to 3 do
+      for i := 0 to 2 do
       begin
         Form1.StringGrid1.Cells[i, j] := Form1.SQLQuery2.fields[i].AsString;
       end;
-      all_sum:= all_sum+strtoint(Form1.SQLQuery2.fields[3].AsString);
+      all_sum:= all_sum+strtoint(Form1.SQLQuery2.fields[2].AsString);
       Form1.SQLQuery2.Next;
     end;
     FormatSettings.DecimalSeparator := '.';
@@ -1309,7 +1309,7 @@ begin
       begin
       Form1.SQLQuery2.Active := False;
       Form1.SQLQuery2.SQL.Clear;
-      st:='SELECT sensors_hum.name, sensor_values.id_sensors, sensor_values.hum_val, sensor_values.hum_val_proc, sensor_values.temp_val FROM `sensors_hum` RIGHT JOIN `sensor_values` on '+' sensors_hum.id_sensors=sensor_values.id_sensors WHERE sensors_hum.id_pole="'+inttostr(i)+'" and sensors_hum.Active="1"';
+      st:='SELECT sensors_hum.name, sensor_values.id_sensors, sensor_values.hum_val_proc, sensor_values.temp_val FROM `sensors_hum` RIGHT JOIN `sensor_values` on '+' sensors_hum.id_sensors=sensor_values.id_sensors WHERE sensors_hum.id_pole="'+inttostr(i)+'" and sensors_hum.Active="1"';
       Form1.SQLQuery2.SQL.Add(st);
       Form1.SQLQuery2.Active := true;
       Form1.SQLQuery2.First;
