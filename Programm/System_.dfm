@@ -2735,7 +2735,7 @@ object Form1: TForm1
         Top = 1
         Width = 496
         Height = 461
-        ActivePage = TabSheet4
+        ActivePage = TabSheet6
         Align = alClient
         TabOrder = 0
         object TabSheet4: TTabSheet
@@ -2933,11 +2933,11 @@ object Form1: TForm1
             Align = alClient
             TabOrder = 0
             object Label18: TLabel
-              Left = 134
-              Top = 15
-              Width = 196
+              Left = 86
+              Top = 30
+              Width = 335
               Height = 21
-              Caption = #1056#1072#1089#1093#1086#1076' '#1074#1086#1076#1099' '#1087#1086' '#1074#1086#1076#1086#1074#1086#1076#1072#1084
+              Caption = #1056#1072#1089#1093#1086#1076' '#1074#1086#1076#1099' '#1087#1086' '#1074#1085#1091#1090#1088#1080#1093#1086#1079#1103#1081#1089#1090#1074#1077#1085#1085#1086#1084#1091' '#1082#1072#1085#1072#1083#1091
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -16
@@ -2951,6 +2951,14 @@ object Form1: TForm1
               Width = 40
               Height = 15
               Caption = 'Label34'
+              Visible = False
+            end
+            object Label35: TLabel
+              Left = 160
+              Top = 73
+              Width = 40
+              Height = 15
+              Caption = 'Label35'
               Visible = False
               WordWrap = True
             end

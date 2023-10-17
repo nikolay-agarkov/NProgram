@@ -166,6 +166,7 @@ type
     Label33: TLabel;
     Timer_rashod: TTimer;
     Label34: TLabel;
+    Label35: TLabel;
     procedure Timer_dateTimer(Sender: TObject);
     procedure N4Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -1266,10 +1267,48 @@ var
   k, all_sum:integer;
   sr:double;
   st,st1: string;
+  r_f:double;
 begin
   all_sum:=0;
   if bd_c = True then
   begin
+
+  form1.SQLQuery2.SQL.Clear;
+  form1.SQLQuery2.SQL.Add('SELECT rashod FROM records WHERE sensor_id=1 ORDER BY date_insert desc LIMIT 1');
+  Form1.SQLQuery2.Active := True;
+  Form1.SQLQuery2.First;
+  label35.Caption:= floattostr(Form1.SQLQuery2.fields[0].AsFloat);
+
+
+  form1.SQLQuery2.SQL.Clear;
+  form1.SQLQuery2.SQL.Add('UPDATE sensor_level SET rashod_s='+QuotedStr(label35.Caption)+' WHERE sensor_level.id=1');
+  form1.SQLQuery2.ExecSQL();
+
+
+    form1.SQLQuery2.SQL.Clear;
+  form1.SQLQuery2.SQL.Add('SELECT rashod FROM records WHERE sensor_id=2 ORDER BY date_insert desc LIMIT 1');
+  Form1.SQLQuery2.Active := True;
+  Form1.SQLQuery2.First;
+  label35.Caption:= floattostr(Form1.SQLQuery2.fields[0].AsFloat);
+
+
+  form1.SQLQuery2.SQL.Clear;
+  form1.SQLQuery2.SQL.Add('UPDATE sensor_level SET rashod_s='+QuotedStr(label35.Caption)+' WHERE sensor_level.id=2');
+  form1.SQLQuery2.ExecSQL();
+
+
+    form1.SQLQuery2.SQL.Clear;
+  form1.SQLQuery2.SQL.Add('SELECT rashod FROM records WHERE sensor_id=3 ORDER BY date_insert desc LIMIT 1');
+  Form1.SQLQuery2.Active := True;
+  Form1.SQLQuery2.First;
+  label35.Caption:= floattostr(Form1.SQLQuery2.fields[0].AsFloat);
+
+
+  form1.SQLQuery2.SQL.Clear;
+  form1.SQLQuery2.SQL.Add('UPDATE sensor_level SET rashod_s='+QuotedStr(label35.Caption)+' WHERE sensor_level.id=3');
+  form1.SQLQuery2.ExecSQL();
+
+
 
     for i := StringGrid1.FixedRows to StringGrid1.RowCount - 1 do
       StringGrid1.Rows[i].Clear;
